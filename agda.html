@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGDA Course - DearCare Academy</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/images/dearcare-favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <style>
+        /* Custom styles for AGDA page */
+        .course-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--title-color);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--container-color) 0%, #1a237e 100%);
+            color: white;
+        }
+
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--first-color) 0%, #1a237e 100%);
+            opacity: 0.2;
+        }
+
+        .course-hero-shape-1,
+        .course-hero-shape-2,
+        .course-hero-shape-3 {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .course-hero-shape-1 {
+            top: -2rem;
+            right: -2rem;
+            width: 150px;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .course-hero-shape-2 {
+            bottom: -2rem;
+            left: -2rem;
+            width: 150px;
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .course-hero-shape-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .course-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .course-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .feature-card h3 {
+            color: var(--title-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-color);
+        }
+
+        .highlight-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-item {
+            background: var(--container-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--first-color);
+            transition: width 0.3s ease;
+        }
+
+        .highlight-item:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+
+        .course-section {
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .course-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--first-color), transparent);
+        }
+
+        .apply-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(to right, var(--first-color-alt), var(--first-color));
+            margin: 4rem 0;
+            border-radius: 20px;
+        }
+
+        .apply-section h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--container-color);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--first-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Update course-hero background */
+        .course-hero {
+            /* ...existing styles... */
+            background: linear-gradient(135deg, var(--container-color) 0%, #1a237e 100%);
+            color: white;
+        }
+
+        .course-hero::before {
+            background: linear-gradient(45deg, var(--first-color) 0%, #1a237e 100%);
+            opacity: 0.2;
+        }
+
+        /* Enhanced stat cards */
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--container-color) 0%, rgba(26, 35, 126, 0.1) 100%);
+            border: 2px solid transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card:hover {
+            border-color: var(--first-color);
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, var(--first-color) 0%, #ff6b6b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* Enhanced feature cards */
+        .feature-card {
+            position: relative;
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, var(--container-color) 0%, rgba(26, 35, 126, 0.05) 100%);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--first-color) 0%, #ff6b6b 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+            border-radius: 15px;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--first-color);
+        }
+
+        .feature-card h3 {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-card h3 i {
+            color: var(--first-color);
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover h3 i {
+            transform: rotate(360deg) scale(1.2);
+            color: #ff6b6b;
+        }
+
+        .feature-card p {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card:hover p {
+            color: var(--title-color);
+        }
+
+        /* Add pulsing animation to stats */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .stat-number {
+            animation: pulse 2s infinite;
+        }
+
+        /* Floating animation for feature card icons */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .feature-card i {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Add icons to all feature cards */
+        .feature-card:nth-child(1) i { color: #ff6b6b; }
+        .feature-card:nth-child(2) i { color: #4ecdc4; }
+        .feature-card:nth-child(3) i { color: #45b7d1; }
+        .feature-card:nth-child(4) i { color: #96c93d; }
+        .feature-card:nth-child(5) i { color: #e056fd; }
+
+        /* Update hero section text visibility */
+        .course-hero h1, .course-hero .hero-subtitle {
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* New styles for Why Choose section */
+        .why-choose-section {
+            background: #f5f5f5;
+            padding: 5rem 0;
+            margin: 4rem 0;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-choose-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(26,35,126,0.1) 100%);
+        }
+
+        /* Update stat cards */
+        .stat-card {
+            background: white;
+            border: 2px solid transparent;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #ff6b6b;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.1);
+        }
+
+        .stat-number {
+            background: linear-gradient(45deg, #ff6b6b 0%, #ffd93d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            text-shadow: none;
+        }
+
+        .stat-card p {
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Update feature cards hover state */
+        .feature-card {
+            border: 2px solid transparent;
+            background: white;
+        }
+
+        .feature-card:hover {
+            border-color: #ff6b6b;
+            box-shadow: 0 10px 20px rgba(255,107,107,0.1);
+        }
+
+        .feature-card::before {
+            background: linear-gradient(45deg, #ff6b6b 0%, #ffd93d 100%);
+        }
+
+        /* Update hero text styles */
+        .course-hero h1 {
+            background: linear-gradient(45deg, #ff6b6b 0%, #ffd93d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            text-shadow: none;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            color: #4ecdc4;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-shadow: none;
+            opacity: 1;
+        }
+
+        /* Lighter background for Why Choose section */
+        .why-choose-section {
+            background: #fafafa;
+        }
+
+        .why-choose-section::before {
+            background: linear-gradient(135deg, 
+                rgba(255,107,107,0.05) 0%, 
+                rgba(26,35,126,0.05) 100%
+            );
+        }
+
+        /* Add a subtle border to Why Choose section */
+        .why-choose-section {
+            border: 1px solid rgba(255,107,107,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Update hero text styles while keeping background */
+        .course-hero h1 {
+            background: linear-gradient(45deg, #1a237e 0%, #45b7d1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            text-shadow: none;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            color: #00bcd4;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            opacity: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Add subtle glow effect */
+        .course-hero h1::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(69,183,209,0.2) 0%, transparent 70%);
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        /* Update hero subtitle style */
+        .hero-subtitle {
+            color: #ff6b6b;  /* Orange color matching theme */
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            opacity: 1;
+            position: relative;
+            z-index: 2;
+            animation: glowEffect 2s ease-in-out infinite;
+        }
+
+        @keyframes glowEffect {
+            0%, 100% { text-shadow: 0 2px 4px rgba(255,107,107,0.2); }
+            50% { text-shadow: 0 2px 15px rgba(255,107,107,0.4); }
+        }
+
+        /* Update hero subtitle with more vibrant orange color */
+        .hero-subtitle {
+            color: #FF8C42; /* Brighter orange color */
+            font-size: 1.4rem;
+            font-weight: 600; /* Increased font weight for better visibility */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Enhanced text shadow */
+            opacity: 1;
+            position: relative;
+            z-index: 2;
+            animation: glowEffect 2s ease-in-out infinite;
+        }
+
+        @keyframes glowEffect {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(255,140,66,0.3); }
+            50% { text-shadow: 2px 2px 20px rgba(255,140,66,0.5); }
+        }
+
+        /* Add a subtle background glow for better contrast */
+        .hero-subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255,140,66,0.1) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(8px);
+        }
+
+        /* Enhanced hero section styles */
+        .course-hero {
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, rgba(255,140,0,0.1) 0%, rgba(26,35,126,0.2) 100%),
+                radial-gradient(circle at top right, rgba(255,140,0,0.2) 0%, transparent 50%),
+                radial-gradient(circle at bottom left, rgba(26,35,126,0.2) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .course-hero h1 {
+            background: linear-gradient(45deg, #1a237e 0%, #45b7d1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-shadow: none;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            color: #FF7F00; /* Darker orange */
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced glow effects */
+        .course-hero h1::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(69,183,209,0.3) 0%, transparent 70%);
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        .hero-subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255,127,0,0.2) 0%, transparent 70%);
+            filter: blur(15px);
+            z-index: -1;
+        }
+
+        /* Enhanced shape animations */
+        .course-hero-shape-1,
+        .course-hero-shape-2,
+        .course-hero-shape-3 {
+            opacity: 0.15;
+            filter: hue-rotate(15deg);
+        }
+
+        @keyframes glowEffect {
+            0%, 100% { 
+                text-shadow: 2px 2px 4px rgba(255,127,0,0.3);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 2px 2px 20px rgba(255,127,0,0.5);
+                transform: scale(1.02);
+            }
+        }
+
+        .hero-subtitle {
+            animation: glowEffect 3s ease-in-out infinite;
+        }
+
+        /* Update hero section styles */
+        .course-hero {
+            min-height: 75vh; /* Increased height */
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            margin-bottom: 0; /* Remove margin to connect with Why Choose section */
+            padding: 6rem 2rem; /* Increased padding */
+        }
+
+        .course-hero h1 {
+            background: linear-gradient(45deg, #FF7F00, #FFA500); /* Orange gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 4rem; /* Larger font size */
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced glow effect for heading */
+        .course-hero h1::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255,127,0,0.2) 0%, transparent 70%);
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        /* Remove gap between hero and Why Choose section */
+        .why-choose-section {
+            margin-top: 0;
+            border-radius: 0 0 20px 20px; /* Round only bottom corners */
+        }
+
+        /* Enhanced hero section with more background animations */
+        .course-hero {
+            /* ...existing styles... */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Additional animated shapes */
+        .animated-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .animated-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            background: linear-gradient(45deg, #FF7F00, #FFA500);
+        }
+
+        .circle-1 {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation: floatCircle 8s infinite ease-in-out;
+        }
+
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 5%;
+            animation: floatCircle 12s infinite ease-in-out reverse;
+        }
+
+        .circle-3 {
+            width: 80px;
+            height: 80px;
+            bottom: 15%;
+            left: 15%;
+            animation: floatCircle 10s infinite ease-in-out 2s;
+        }
+
+        .animated-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(255,127,0,0.2), transparent);
+            height: 2px;
+        }
+
+        .line-1 {
+            width: 200px;
+            top: 20%;
+            left: -200px;
+            animation: slideLine 8s infinite linear;
+        }
+
+        .line-2 {
+            width: 300px;
+            bottom: 30%;
+            right: -300px;
+            animation: slideLine 12s infinite linear reverse;
+        }
+
+        @keyframes floatCircle {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg); 
+                opacity: 0.1;
+            }
+            50% { 
+                transform: translate(30px, 30px) rotate(180deg); 
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes slideLine {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        /* Update existing content to appear above animations */
+        .course-hero-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Enhanced Course Curriculum Section */
+        .curriculum-heading {
+            color: #FFD700;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .curriculum-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 10px;
+            background: url("data:image/svg+xml,%3Csvg width='180' height='10' viewBox='0 0 180 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5C20 2 40 8 60 5C80 2 100 8 120 5C140 2 160 8 179 5' stroke='%23FFD700' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+        }
+
+        /* Enhanced Module Cards */
+        .module-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,215,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,215,0,0.1);
+            border-color: rgba(255,215,0,0.5);
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #FFD700, #FFA500);
+            transition: width 0.3s ease;
+        }
+
+        .module-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+
+        .module-title {
+            color: #333;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .module-number {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        /* Updated Curriculum Heading Styles */
+        .curriculum-heading {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .curriculum-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+        }
+
+        /* Enhanced Module Cards */
+        .module-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,215,0,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255,215,0,0.15);
+            border-color: rgba(255,215,0,0.5);
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #FFD700, #FFA500);
+            transition: width 0.3s ease;
+        }
+
+        .module-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+
+        .module-title {
+            color: #333;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .module-number {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 1.4rem;
+            min-width: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <nav class="navbar container flexitem">
+            <a href="index.html"><img src="assets/images/dearcare-favicon.png" alt="" width="180" class="nav-logo-img"></a>
+            <div class="nav-menu" id="nav-menu">
+                <i class="fa-solid fa-xmark" id="nav-close"></i>
+                <ul class="nav-list flexitem">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#popular" class="nav-link">Courses</a></li>
+                    <li><a href="index.html#learn" class="nav-link">About</a></li>
+                    <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="index.html#members" class="nav-link">Members</a></li>
+                    <li><a href="index.html#faq" class="nav-link">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="nav-action flexitem">
+                <button class="btn nav-btn" id="login-toggle">Register</button>
+            </div>
+            <i class="fa-solid fa-bars" id="nav-toggle"></i>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="course-hero" data-aos="fade-up">
+            <div class="animated-bg">
+                <div class="animated-circle circle-1"></div>
+                <div class="animated-circle circle-2"></div>
+                <div class="animated-circle circle-3"></div>
+                <div class="animated-line line-1"></div>
+                <div class="animated-line line-2"></div>
+            </div>
+            <img src="assets/images/Shape-1.png" alt="" class="course-hero-shape-1">
+            <img src="assets/images/Shape-2.png" alt="" class="course-hero-shape-2">
+            <img src="assets/images/cubes.png" alt="" class="course-hero-shape-3">
+            <div class="course-hero-content">
+                <h1>Advanced General Nursing Assistant (AGDA) Course</h1>
+                <p class="hero-subtitle">Transform Your Passion for Healthcare into a Rewarding Career</p>
+            </div>
+        </div>
+
+        <section class="why-choose-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title text-center" style="margin-bottom: 3rem;">Why Choose Our AGDA Course?</h2>
+                
+                <div class="stat-grid">
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="stat-number">95%</                        </div>
+                        <p>Placement Rate</p>
+                    </div>
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="stat-number">1000+</div>
+                        <p>Successful Graduates</p>
+                    </div>
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="stat-number">50+</div>
+                        <p>Hospital Partners</p>
+                    </div>
+                </div>
+
+                <div class="highlight-list">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3><i class="fas fa-graduation-cap"></i> Industry-Focused</h3>
+                        <p>Comprehensive curriculum aligned with healthcare industry demands</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3><i class="fas fa-hands-helping"></i> Hands-on Training</h3>
+                        <p>Real-world experience in hospitals, clinics, and home healthcare settings</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <h3><i class="fas fa-user-md"></i> Expert Faculty</h3>
+                        <p>Learn from experienced nursing professionals and medical trainers</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <h3><i class="fas fa-chart-line"></i> High Job Demand</h3>
+                        <p>Excellent career opportunities in hospitals, nursing homes, and home care services</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                        <h3><i class="fas fa-certificate"></i> Certification & Support</h3>
+                        <p>Earn a recognized certification with job assistance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="course-section" data-aos="fade-up">
+                <h2 class="curriculum-heading">Course Curriculum</h2>
+                <div class="highlight-list">
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="module-title">
+                            <span class="module-number">01</span>
+                            Fundamentals of Healthcare & Patient Care
+                        </h3>
+                        <p class="module-content">Learn the essential principles and practices of healthcare delivery and patient care management.</p>
+                    </div>
+                    
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="module-title">
+                            <span class="module-number">02</span>
+                            Basic & Advanced Nursing Care Techniques
+                        </h3>
+                        <p class="module-content">Master fundamental and advanced nursing procedures for comprehensive patient care.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="module-title">
+                            <span class="module-number">03</span>
+                            Medical & Clinical Training
+                        </h3>
+                        <p class="module-content">Comprehensive training in medical procedures and clinical practices essential for healthcare settings.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="module-title">
+                            <span class="module-number">04</span>
+                            Elderly & Palliative Care
+                        </h3>
+                        <p class="module-content">Specialized care techniques for elderly patients and those requiring palliative support.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="500">
+                        <h3 class="module-title">
+                            <span class="module-number">05</span>
+                            Post-Surgical & Specialized Care
+                        </h3>
+                        <p class="module-content">Advanced techniques for post-operative care and specialized medical conditions.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="600">
+                        <h3 class="module-title">
+                            <span class="module-number">06</span>
+                            Communication & Emotional Support
+                        </h3>
+                        <p class="module-content">Effective communication strategies and emotional care techniques for patient support.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="700">
+                        <h3 class="module-title">
+                            <span class="module-number">07</span>
+                            Legal & Ethical Aspects
+                        </h3>
+                        <p class="module-content">Understanding healthcare laws, ethics, and professional responsibilities in patient care.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="800">
+                        <h3 class="module-title">
+                            <span class="module-number">08</span>
+                            Technology & Digital Health
+                        </h3>
+                        <p class="module-content">Modern healthcare technologies and digital tools used in nursing practice.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="900">
+                        <h3 class="module-title">
+                            <span class="module-number">09</span>
+                            Diet & Nutrition
+                        </h3>
+                        <p class="module-content">Essential principles of patient nutrition and dietary management in healthcare.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="1000">
+                        <h3 class="module-title">
+                            <span class="module-number">10</span>
+                            Physiotherapy & Rehabilitation
+                        </h3>
+                        <p class="module-content">Basic rehabilitation techniques and physiotherapy support for patient recovery.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="1100">
+                        <h3 class="module-title">
+                            <span class="module-number">11</span>
+                            Psychology & Patient Behavior
+                        </h3>
+                        <p class="module-content">Understanding patient psychology and managing various behavioral aspects in healthcare.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="1200">
+                        <h3 class="module-title">
+                            <span class="module-number">12</span>
+                            Workouts & Mobility Training
+                        </h3>
+                        <p class="module-content">Exercise programs and mobility enhancement techniques for patient rehabilitation.</p>
+                    </div>
+
+                    <div class="module-card" data-aos="fade-up" data-aos-delay="1300">
+                        <h3 class="module-title">
+                            <span class="module-number">13</span>
+                            Medical Equipment Handling
+                        </h3>
+                        <p class="module-content">Proper usage and maintenance of essential medical equipment and devices.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="course-section" data-aos="fade-up">
+                <h2 class="section-title">Eligibility Criteria</h2>
+                <div class="popular-box">
+                    <ul>
+                        <li>Minimum qualification: Plus Two</li>
+                        <li>Age: up to 30 years</li>
+                        <li>Passion for healthcare and patient care</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="course-section" data-aos="fade-up">
+                <h2 class="section-title">Career Opportunities</h2>
+                <div class="popular-box">
+                    <p>After completing the AGDA Course, students can work as:</p>
+                    <ul>
+                        <li>General Nursing Assistants in hospitals & clinics</li>
+                        <li>Home Nursing & Patient Care Professionals</li>
+                        <li>Elderly & Palliative Caregivers</li>
+                        <li>Post-Surgical Care Assistants</li>
+                        <li>Medical & Rehabilitation Center Staff</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="course-section" data-aos="fade-up">
+                <h2 class="section-title">Internship & Practical Training</h2>
+                <div class="popular-box">
+                    <p>3 to 6 months of hands-on training in reputed hospitals and healthcare institutions. Internship opportunities with real-time patient care experience.</p>
+                </div>
+            </section>
+
+            <section class="course-section" data-aos="fade-up">
+                <h2 class="section-title">Course Duration</h2>
+                <div class="popular-box">
+                    <ul>
+                        <li>Duration – 3 Months</li>
+                        <li>Flexible Learning Options Available</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="apply-section" data-aos="fade-up">
+                <h2>Ready to Start Your Healthcare Career?</h2>
+                <p>Join our next batch starting soon</p>
+                <button class="btn">Apply Now</button>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer section">
+        <!-- Copy the footer content from index.html -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Lazy loading images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        });
+    </script>
+</body>
+</html>
