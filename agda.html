@@ -920,6 +920,331 @@
             font-size: 1.4rem;
             min-width: 40px;
         }
+
+        /* Enhanced Eligibility Section Styles */
+        .eligibility-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255,215,0,0.15);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .eligibility-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #FFD700, #FFA500);
+        }
+
+        .eligibility-heading {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .eligibility-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .eligibility-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,215,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .eligibility-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,215,0,0.5);
+            box-shadow: 0 10px 20px rgba(255,215,0,0.1);
+        }
+
+        .eligibility-icon {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            min-width: 40px;
+        }
+
+        .eligibility-text {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .eligibility-highlight {
+            color: #FF7F00;
+            font-weight: 600;
+        }
+
+        /* Career Opportunities Section Styles */
+        .career-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .career-heading {
+            background: linear-gradient(45deg, #1a237e, #0d47a1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .career-intro {
+            text-align: center;
+            color: #1a237e;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .career-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .career-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #1a237e;
+            box-shadow: 0 5px 15px rgba(26,35,126,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .career-item:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+        }
+
+        .career-icon {
+            font-size: 1.8rem;
+            color: #1a237e;
+            transition: all 0.3s ease;
+        }
+
+        .career-item:hover .career-icon {
+            color: #fff;
+        }
+
+        .career-text {
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .career-item:hover .career-text {
+            color: white;
+        }
+
+        .career-number {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 3rem;
+            font-weight: 800;
+            opacity: 0.1;
+            color: #1a237e;
+            transition: all 0.3s ease;
+        }
+
+        .career-item:hover .career-number {
+            color: white;
+            opacity: 0.2;
+        }
+
+        /* Career Opportunities Styles - Point Based */
+        .career-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            border-radius: 20px;
+            padding: 3.5rem;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(26,35,126,0.08);
+        }
+
+        .career-heading {
+            color: #1a237e;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .career-intro {
+            text-align: center;
+            color: #0d47a1;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+
+        .career-list {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .career-point {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(26,35,126,0.03);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .career-point:hover {
+            transform: translateX(10px);
+            background: rgba(26,35,126,0.06);
+        }
+
+        .career-icon {
+            font-size: 1.5rem;
+            color: #1a237e;
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(26,35,126,0.1);
+        }
+
+        .career-text {
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .career-point::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: #1a237e;
+            transition: height 0.3s ease;
+        }
+
+        .career-point:hover::before {
+            height: 100%;
+        }
+
+        /* New Eligibility Criteria Styles */
+        .eligibility-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            border-radius: 20px;
+            padding: 3.5rem;
+            position: relative;
+        }
+
+        .eligibility-heading {
+            color: #1a237e;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+
+        .eligibility-conditions {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+
+        .condition-item {
+            position: relative;
+            padding: 1rem 1rem 1rem 3rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .condition-item::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            background: #1a237e;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .condition-label {
+            color: #1a237e;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .condition-item:hover {
+            transform: translateX(10px);
+            background: rgba(26,35,126,0.05);
+            border-radius: 8px;
+        }
+
+        .condition-note {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(26,35,126,0.05);
+            border-left: 4px solid #1a237e;
+            border-radius: 0 8px 8px 0;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -1119,26 +1444,53 @@
             </section>
 
             <section class="course-section" data-aos="fade-up">
-                <h2 class="section-title">Eligibility Criteria</h2>
-                <div class="popular-box">
-                    <ul>
-                        <li>Minimum qualification: Plus Two</li>
-                        <li>Age: up to 30 years</li>
-                        <li>Passion for healthcare and patient care</li>
+                <div class="eligibility-section">
+                    <h2 class="eligibility-heading">Eligibility Criteria</h2>
+                    <ul class="eligibility-conditions">
+                        <li class="condition-item" data-aos="fade-up" data-aos-delay="100">
+                            <span class="condition-label">Education:</span>
+                            Minimum qualification of Plus Two or equivalent
+                        </li>
+                        <li class="condition-item" data-aos="fade-up" data-aos-delay="200">
+                            <span class="condition-label">Age Limit:</span>
+                            Candidates should be up to 30 years of age
+                        </li>
+                        <li class="condition-item" data-aos="fade-up" data-aos-delay="300">
+                            <span class="condition-label">Essential Quality:</span>
+                            Strong passion for healthcare and dedication to patient care
+                        </li>
                     </ul>
+                    <div class="condition-note" data-aos="fade-up" data-aos-delay="400">
+                        <strong>Note:</strong> All candidates must submit required educational documents and age proof during the application process. Selection will be based on academic performance and personal interview.
+                    </div>
                 </div>
             </section>
 
             <section class="course-section" data-aos="fade-up">
-                <h2 class="section-title">Career Opportunities</h2>
-                <div class="popular-box">
-                    <p>After completing the AGDA Course, students can work as:</p>
-                    <ul>
-                        <li>General Nursing Assistants in hospitals & clinics</li>
-                        <li>Home Nursing & Patient Care Professionals</li>
-                        <li>Elderly & Palliative Caregivers</li>
-                        <li>Post-Surgical Care Assistants</li>
-                        <li>Medical & Rehabilitation Center Staff</li>
+                <div class="career-section">
+                    <h2 class="career-heading">Career Opportunities</h2>
+                    <p class="career-intro">After completing the AGDA Course, students can work as:</p>
+                    <ul class="career-list">
+                        <li class="career-point" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-hospital-user career-icon"></i>
+                            <span class="career-text">General Nursing Assistants in hospitals & clinics</span>
+                        </li>
+                        <li class="career-point" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-home career-icon"></i>
+                            <span class="career-text">Home Nursing & Patient Care Professionals</span>
+                        </li>
+                        <li class="career-point" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fas fa-hand-holding-heart career-icon"></i>
+                            <span class="career-text">Elderly & Palliative Caregivers</span>
+                        </li>
+                        <li class="career-point" data-aos="fade-up" data-aos-delay="400">
+                            <i class="fas fa-procedures career-icon"></i>
+                            <span class="career-text">Post-Surgical Care Assistants</span>
+                        </li>
+                        <li class="career-point" data-aos="fade-up" data-aos-delay="500">
+                            <i class="fas fa-clinic-medical career-icon"></i>
+                            <span class="career-text">Medical & Rehabilitation Center Staff</span>
+                        </li>
                     </ul>
                 </div>
             </section>
