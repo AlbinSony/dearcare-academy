@@ -152,7 +152,7 @@
 }
 
 .course-section {
-    padding: 4rem 0;
+    padding: 1.5rem 0;  /* Reduced from 4rem to 1.5rem */
     position: relative;
 }
 
@@ -363,8 +363,8 @@
 /* New styles for Why Choose section */
 .why-choose-section {
     background: #f5f5f5;
-    padding: 5rem 0;
-    margin: 4rem 0;
+    padding: 3rem 0;    /* Reduced from 5rem to 3rem */
+    margin: 1.5rem 0;   /* Reduced from 4rem to 1.5rem */
     border-radius: 20px;
     position: relative;
     overflow: hidden;
@@ -1345,6 +1345,7 @@
     position: relative;
     overflow: hidden;
     text-align: center;
+    margin: 1rem 0;     /* Reduced margin */
 }
 
 .internship-box::before {
@@ -1466,7 +1467,7 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    margin-top: -1rem; /* Move it up closer to duration section */
+    margin: 1.5rem auto;  /* Reduced margin */
     box-shadow: 0 10px 30px rgba(26,35,126,0.2);
 }
 
@@ -2145,4 +2146,35 @@
 .training-center-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(37, 79, 163, 0.1);
+}
+
+/* Reduce margin between sections */
+.why-choose-section {
+    padding: 3rem 0;    /* Reduced from 5rem to 3rem */
+    margin: 1.5rem 0;   /* Reduced from 4rem to 1.5rem */
+}
+
+.overview-section,
+.curriculum-section,
+.practical-training,
+.career-paths {
+    padding: 2rem 0;    /* Unified padding for all sections */
+    margin-bottom: 1rem; /* Small gap between sections */
+}
+
+.internship-box {
+    margin: 1rem 0;     /* Reduced margin */
+}
+
+.apply-now-section {
+    margin: 1.5rem auto;  /* Reduced margin */
+}
+
+/* Reduce gaps between cards */
+.objective-grid,
+.module-grid,
+.training-grid,
+.career-grid {
+    gap: 1rem;          /* Reduced from 2rem/2.5rem */
+    margin: 1.5rem 0;   /* Reduced margin */
 }

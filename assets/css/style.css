@@ -7,11 +7,11 @@
 :root {
   /* Colors */
   --accent-color: #ededed;
-  --primary-color: #254FA3;
-  --secondary-color: #ffa732;
+  --primary-color: #2563eb;
+  --secondary-color: #1d4ed8;
   --text-dark-color: #1d1b1b;
   --text-light-color: #3f3f3f;
-  --text-color: #000000db;
+  --text-color: #1f2937;
   --span-primary-color: #24ca6f;
   --span-secondary-color: #ffb534;
   --rating: #ffd700;
