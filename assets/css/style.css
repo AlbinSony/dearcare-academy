@@ -63,6 +63,7 @@ body {
   font-family: var(--first-font);
   background: var(--body-color);
 }
+
 body::-webkit-scrollbar {
   width: 0.5rem;
 }
@@ -207,7 +208,7 @@ h4 {
 .navbar {
   height: var(--header-height);
   justify-content: space-between;
-  padding: 0 1.5rem; /* Increased padding */
+  padding: 0;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -236,14 +237,17 @@ h4 {
   background: var(--primary-color);
 }
 .nav-logo-img {
-  width: 240px; /* Increased from 220px */
+  padding: 0;
+  margin: 0;
+  width: 180px; /* Changed from 380px to 180px */
   height: auto;
-  transition: all 0.3s ease;
+  position: relative;
+  left: 0;
 }
 #nav-toggle {
-  margin-right: 15px; /* Added margin to keep hamburger visible */
-  position: relative; /* Added position */
-  right: 10px; /* Move hamburger left */
+  margin-right: 50px;
+  position: relative;
+  right: 30px;
   font-size: 1.5rem;
 }
 /* ==================================================================== 
@@ -762,7 +766,7 @@ h4 {
   padding: 16px 25px;
   font-size: var(--normal-font-size);
   border-radius: var(--border-radius-1);
-  color: var(--body-color);
+  color: var (--body-color);
 }
 .input-box::placeholder {
   color: #ffffffc0;
@@ -970,7 +974,25 @@ h4 {
 }
 @media screen and (max-width: 768px) {
   .nav-logo-img {
-    width: 200px; /* Slightly smaller on mobile */
+    width: 280px;
+    margin: 0;
+    position: relative;
+    left: 0;
+  }
+
+  .nav-logo-img {
+    width: 100px;
+    margin: 0;
+    position: relative;
+    left: 0;
+  }
+
+  .navbar {
+    padding: 0;
+  }
+
+  .nav-logo-img {
+    width: 100px;
   }
 
   .navbar {
@@ -978,7 +1000,7 @@ h4 {
   }
 
   #nav-toggle {
-    right: 5px; /* Adjust for smaller screens */
+    right: 5px;
   }
 
   .nav-menu {
@@ -1046,7 +1068,25 @@ h4 {
 }
 @media screen and (max-width: 480px) {
   .nav-logo-img {
-    width: 180px;
+    width: 220px;
+    margin: 0;
+    position: relative;
+    left: 0;
+  }
+
+  .nav-logo-img {
+    width: 100px;
+    margin: 0;
+    position: relative;
+    left: 0;
+  }
+
+  .navbar {
+    padding: 0 0.8rem 0 0;  /* Reduced left padding */
+  }
+
+  .nav-logo-img {
+    width: 100px;
   }
 
   .navbar {
@@ -1084,14 +1124,24 @@ h4 {
   }
 }
 @media screen and (max-width: 450px) {
+  .nav-logo-img {
+    width: 200px;
+    margin: 0;
+    position: relative;
+    left: 0;
+  }
+
+  .nav-logo-img {
+    width: 100px;
+    margin: 0;
+    position: relative;
+    left: 0;
+  }
   .navbar {
     height: calc(var(--header-height) - 0.5rem);
   }
   .nav-link {
     font-size: 1.4rem;
-  }
-  .nav-logo-img {
-    width: 180px;
   }
   .nav-btn {
     padding: 10px 15px;
@@ -1107,7 +1157,21 @@ h4 {
 }
 @media screen and (max-width: 435px) {
   .nav-logo-img {
+    width: 200px;
+    margin: 0;
+    position: relative;
+    left: 0;
+  }
+
+  .nav-logo-img {
     width: 150px;
+    margin: 0;
+    position: relative;
+    left: 0;
+  }
+
+  .nav-logo-img {
+    width: 145px;
   }
   .nav-action {
     gap: 0.2rem;
@@ -1138,6 +1202,16 @@ h4 {
   }
 }
 @media screen and (max-width: 370px) {
+  .nav-logo-img {
+    width: 180px;
+    margin: 0;
+    position: relative;
+    left: 0;
+  }
+
+  .nav-logo-img {
+    width: 180px;
+  }
   :root {
     --h1-font-size: 2.8rem;
     --h2-font-size: 1.8rem;
@@ -1151,9 +1225,6 @@ h4 {
   .nav-btn {
     padding: 8px 12px;
     font-size: 0.8rem;
-  }
-  .nav-logo-img {
-    width: 140px;
   }
   .brand-logos {
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
