@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.dearcare.in/sitemap.xml
+
+Disallow: /assets/css/
+Disallow: /assets/js/

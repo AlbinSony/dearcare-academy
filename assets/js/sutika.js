@@ -45,45 +45,16 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', scrollHeader);
 
     // View More functionality
-    const viewMoreBtn = document.getElementById('viewMoreBtn');
+    const viewMoreBtn = document.querySelector('.view-more-btn');
     const hiddenModules = document.querySelectorAll('.hidden-module');
-    let isExpanded = false;
 
-    if (viewMoreBtn && hiddenModules.length > 0) {
+    if (viewMoreBtn) {
         viewMoreBtn.addEventListener('click', function() {
-            isExpanded = !isExpanded;
-            
+            this.classList.toggle('active');
             hiddenModules.forEach(module => {
-                if(isExpanded) {
-                    module.style.display = 'block';
-                    // Use setTimeout to trigger transition after display change
-                    setTimeout(() => {
-                        module.classList.add('show');
-                    }, 10);
-                } else {
-                    module.classList.remove('show');
-                    // Wait for transition to complete before hiding
-                    setTimeout(() => {
-                        module.style.display = 'none';
-                    }, 400);
-                }
+                module.classList.toggle('show');
             });
-
-            // Update button text and icon
-            viewMoreBtn.innerHTML = isExpanded ? 
-                'Show Less <i class="fas fa-chevron-up"></i>' : 
-                'View More Modules <i class="fas fa-chevron-down"></i>';
-            
-            viewMoreBtn.classList.toggle('active');
-
-            // Smooth scroll to new content if expanding
-            if(isExpanded) {
-                const firstHiddenModule = hiddenModules[0];
-                firstHiddenModule.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-            }
+            this.textContent = this.classList.contains('active') ? 'View Less' : 'View More';
         });
     }
 
@@ -94,5 +65,80 @@ document.addEventListener('DOMContentLoaded', function() {
                 module.style.display = 'none';
             }
         });
+    });
+
+    // Stat counter animation
+    const statNumbers = document.querySelectorAll('.stat-number');
+
+    function animateStats() {
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const step = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateNumber = () => {
+                if (current < target) {
+                    current += step;
+                    if (current > target) current = target;
+                    stat.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateNumber);
+                }
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    updateNumber();
+                    observer.disconnect();
+                }
+            });
+
+            observer.observe(stat);
+        });
+    }
+
+    // Initialize animations when DOM is loaded
+    animateStats();
+
+    // Lazy loading for images
+    const lazyImages = document.querySelectorAll('.lazy-image');
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
+
+    // Form validation and submission
+    const applyForm = document.querySelector('.apply-form');
+    if (applyForm) {
+        applyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form validation and submission logic here
+            console.log('Form submitted');
+        });
+    }
+
+    // Add sticky header behavior
+    const header = document.querySelector('.header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            header.classList.add('sticky');
+        } else {
+            header.classList.remove('sticky');
+        }
+        
+        lastScroll = currentScroll;
     });
 });

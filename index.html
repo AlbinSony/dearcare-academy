@@ -4,19 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DearCare Academy</title>
-    <meta name="description" content="Empower your future with Learnify. Explore diverse courses for personalized, accessible, and engaging online education. Join us on the journey to success!">
-    <meta name="keywords" content="online education, e-learning, courses, Learnify, learning platform, education technology">
-    <meta property="og:title" content="Learnify - Transformative Learning Experiences">
-    <meta property="og:description" content="Empower your future with Learnify. Join us on the journey to success!">
-    <meta property="og:url" content="https://devsethi3.github.io/Learnify-Education-Website/#">
+    <title>DearCare Academy - Premier Healthcare Training Institute in Kerala</title>
+    <meta name="description" content="DearCare Academy provides comprehensive healthcare training including Advanced General Duty Assistant (AGDA), Diploma in Healthcare Assistance (DHCA), Sutika Paricharya (Post-natal Care), and Ayurvedic Nursing & Baby Care courses. Join our professional medical training programs for a rewarding career in healthcare.">
+    <meta name="keywords" content="healthcare training, nursing courses, AGDA course, DHCA course, Ayurvedic nursing, Kerala healthcare institute, medical training, Advanced General Duty Assistant, Diploma in Healthcare Assistance, Sutika Paricharya, post-natal care training, baby care training, patient care assistant, healthcare assistant course, medical assistant program, nursing assistant training, healthcare certification">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.dearcare.in/">
+    <meta property="og:title" content="DearCare Academy - Leading Healthcare & Medical Training Institute">
+    <meta property="og:description" content="Professional healthcare training programs including AGDA (Advanced General Duty Assistant), DHCA (Diploma in Healthcare Assistance), Sutika Paricharya, and Ayurvedic Nursing courses. Expert-led medical training for aspiring healthcare professionals.">
+    <meta property="og:image" content="assets/images/dearcare-favicon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.dearcare.in/">
+    <meta property="twitter:title" content="DearCare Academy - Healthcare Training Excellence">
+    <meta property="twitter:description" content="Transform your career with our specialized healthcare training programs. Professional courses in nursing and patient care.">
+    <meta property="twitter:image" content="assets/images/dearcare-favicon.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "DearCare Academy",
+      "description": "Premier healthcare training institute offering specialized courses in nursing and patient care",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Door No: 2211, 2/1149/I 100, Hilite Business Park",
+        "addressLocality": "Kozhikode",
+        "addressRegion": "Kerala",
+        "postalCode": "673019",
+        "addressCountry": "IN"
+      },
+      "telephone": "+919645400039",
+      "email": "info@dearcare.in",
+      "url": "https://www.dearcare.in"
+    }
+    </script>
 
     <!-- =================================================================
                             Link Custom CSS File
     ================================================================== -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <link rel="stylesheet" href="assets/css/agda.min.css">
 
     <link rel="shortcut icon" href="assets/images/dearcare-favicon.png" type="image/x-icon">
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/images/dearcare-favicon.png" as="image">
     <!-- =================================================================
                             Font Awesome CDN
     ================================================================== -->
@@ -35,7 +70,7 @@
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="header" id="header">
         <nav class="navbar container flexitem">
-            <a href="index.html"><img src="assets/images/removedbg.png" alt="" width="180" class="nav-logo-img"></a>
+            <a href="index.html"><img src="assets/images/removedbg.png" loading="lazy" alt="DearCare Logo" width="180" class="nav-logo-img"></a>
             <div class="nav-menu" id="nav-menu">
                 <i class="fa-solid fa-xmark" id="nav-close"></i>
                 <ul class="nav-list flexitem">
@@ -420,7 +455,7 @@
     <!-- =================================================================
                             Link Custom JS File
     ================================================================== -->
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/script.min.js" defer></script>
 </body>
 
 </html>
