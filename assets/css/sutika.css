@@ -9,24 +9,24 @@
     --bg-gradient: linear-gradient(135deg, #254FA3, #4169E1);
 }
 
+/* Basic resets and visibility fixes */
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    min-height: 100vh;
+}
+
+.main {
+    margin-top: 5rem; /* Adjust based on header height */
+    padding: 1rem;
+}
+
 .course-hero {
     position: relative;
     min-height: 60vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--title-color);
-    text-align: center;
-    padding: 2rem;
-    margin-top: 5rem;
-    overflow: hidden;
-    background: linear-gradient(135deg, var(--container-color) 0%, #1a237e 100%);
-    color: white;
-}
-
-.course-hero::before {
-    content: '';
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -2145,6 +2145,7 @@
     margin-top: 3rem;
     padding: 1rem;
 }
+
 
 .objective-card {
     background: white;
