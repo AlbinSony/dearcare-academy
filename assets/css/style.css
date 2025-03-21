@@ -506,6 +506,7 @@ h4 {
 .popular-courses-grid {
   margin-top: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2rem; /* Added gap for better spacing */
 }
 .popular-description {
   padding-block: 0.5rem;
@@ -515,6 +516,63 @@ h4 {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
   border-radius: var(--border-radius-1);
   padding: 1.5rem 2rem;
+  margin-bottom: 1rem;  /* Reduced from 2rem */
+  background: var(--body-color); /* Added background color */
+  position: relative; /* Added position relative */
+  z-index: 1; /* Added z-index */
+  height: auto;        /* Remove fixed height */
+  overflow: visible;   /* Ensure content is visible */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: cardFadeIn 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Add hover effect for course cards */
+.popular-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for the arrow icon */
+.popular-box:hover #heading-arrow {
+  background: var(--secondary-color);
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+/* Add staggered animation for cards */
+.popular-box:nth-child(1) { animation-delay: 0.1s; }
+.popular-box:nth-child(2) { animation-delay: 0.3s; }
+.popular-box:nth-child(3) { animation-delay: 0.5s; }
+.popular-box:nth-child(4) { animation-delay: 0.7s; }
+
+/* Define the animation */
+@keyframes cardFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popular-box-description {
+  flex: 1; /* Allow description to take remaining space */
+  margin-bottom: 1rem; /* Add some space at bottom */
+  color: var(--text-light-color);
+}
+/* Ensure heading and description are properly spaced */
+.popular-box-heading {
+  margin-bottom: 0.5rem; /* Added small margin */
+}
+.popular-head-primary,
+.popular-head-secondary {
+  display: inline-block;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
 }
 .popular-head-primary {
   font-size: var(--small-font-size);
@@ -545,6 +603,7 @@ h4 {
   place-items: center;
   color: var(--body-color);
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 .user-details {
   padding-block: 0.5rem;
@@ -718,12 +777,13 @@ h4 {
 .newsletter-container {
   position: relative;
   width: 100%;
-  height: 60vh;
+  height: auto; /* Change from fixed height */
+  min-height: 40vh; /* Add minimum height */
   background: linear-gradient(45deg, #254fa3, #254fa3, #4225a3);
   display: flex;
   justify-content: center;
   color: var(--body-color);
-  padding: 5rem 2rem;
+  padding: 3rem 1rem; /* Adjust padding */
   border-radius: var(--border-radius-1);
   overflow: hidden;
   z-index: 10;
@@ -755,6 +815,7 @@ h4 {
   width: 100%;
   gap: 1rem;
   margin-top: 3rem;
+  flex-direction: column; /* Stack items on mobile */
 }
 .input-box:focus-visible {
   outline: 3px solid var(--secondary-color);
@@ -776,6 +837,60 @@ h4 {
   background: var(--secondary-color);
   border-radius: var(--border-radius-1);
   font-size: var(--normal-font-size);
+}
+@media screen and (max-width: 768px) {
+  .newsletter-container {
+    padding: 2rem 1rem;
+  }
+  
+  .newsletter-content {
+    width: 100%;
+  }
+  
+  .newsletter-description {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  
+  .newsletter-input {
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .input-box {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .newsletter-btn {
+    width: 100%;
+    padding: 12px 20px;
+  }
+  
+  .newsletter-shape-1,
+  .newsletter-shape-2,
+  .newsletter-shape-3 {
+    opacity: 0.1;
+    display: none; /* Hide shapes on mobile for better performance */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .newsletter-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .newsletter-content {
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .newsletter-description br {
+    display: none;
+  }
 }
 /* ==================================================================== 
                              FOOTER SECTION
@@ -1032,6 +1147,7 @@ h4 {
   }
   .popular-courses-grid {
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
   }
   .brand-logos {
     gap: 2rem;
@@ -1330,4 +1446,106 @@ h4 {
   to {
     transform: translateY(0);
   }
+}
+
+/* Apply Button Section */
+.apply-button-section {
+    text-align: center;
+    padding: 2rem;
+    margin: -2rem auto 2rem;
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+}
+
+.main-apply-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+    transform: translateY(-20px);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.main-apply-btn:hover {
+    transform: translateY(-25px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+.main-apply-btn i {
+    font-size: 1.4rem;
+}
+
+@media screen and (max-width: 768px) {
+    .apply-button-section {
+        padding: 1.5rem;
+        margin: -1rem auto 1.5rem;
+    }
+
+    .main-apply-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* Apply Now Floating Button Styles */
+.apply-now-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+}
+
+.floating-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.floating-button {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.floating-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 71, 87, 0.3);
+}
+
+.floating-button .apply-text {
+    margin-right: 10px;
+}
+
+.floating-button i {
+    transition: transform 0.3s ease;
+}
+
+.floating-button:hover i {
+    transform: translateX(5px);
+}
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 768px) {
+    .apply-now-floating {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .floating-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 }
