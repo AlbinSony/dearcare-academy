@@ -80,21 +80,43 @@ if (registerClose) {
 const navToggle = document.getElementById("nav-toggle");
 const navClose = document.getElementById("nav-close");
 const navMenu = document.getElementById("nav-menu");
+const navLinks = document.querySelectorAll(".nav-link");
 
 if (navToggle) {
   navToggle.addEventListener("click", () => {
     navMenu.classList.add("show-nav");
+    document.body.style.overflow = "hidden"; // Prevent scrolling when menu is open
   });
 }
+
 if (navClose) {
   navClose.addEventListener("click", () => {
     navMenu.classList.remove("show-nav");
+    document.body.style.overflow = ""; // Restore scrolling
   });
 }
+
+// Close menu when clicking on links
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("show-nav");
+    document.body.style.overflow = ""; // Restore scrolling
+  });
+});
+
 function hideNavmenu() {
   navMenu.classList.remove("show-nav");
+  document.body.style.overflow = ""; // Restore scrolling
 }
+
 window.addEventListener("scroll", hideNavmenu);
+window.addEventListener("resize", () => {
+  // Hide mobile menu when resizing to desktop view
+  if (window.innerWidth > 925 && navMenu.classList.contains("show-nav")) {
+    navMenu.classList.remove("show-nav");
+    document.body.style.overflow = ""; // Restore scrolling
+  }
+});
 
 // ======================================================== MEMBER SWIPER ======================================================== //
 
@@ -136,12 +158,18 @@ var swiper = new Swiper(".member-swiper", {
 
 // ======================================================== TESTIMONIAL SWIPER ======================================================== //
 
-var swiper = new Swiper(".testimonial-swiper", {
-  spaceBetween: 24,
+const testimonialSwiper = new Swiper(".testimonial-swiper", {
+  slidesPerView: 1,
+  spaceBetween: 30,
   loop: true,
+  grabCursor: true,
   autoplay: {
-    delay: 3000,
+    delay: 4000,
     disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
   },
   navigation: {
     nextEl: ".swiper-button-next",
@@ -150,22 +178,32 @@ var swiper = new Swiper(".testimonial-swiper", {
 });
 
 // ======================================================== ACCORDION ======================================================== //
-const accordions = document.querySelectorAll(".accordion");
 
-accordions.forEach((accordion) => {
-  const icon = accordion.querySelector(".faq-icon");
-  const answer = accordion.querySelector(".answer");
+const accordions = document.querySelectorAll('.accordion');
 
-  accordion.addEventListener("click", () => {
-    if (icon.classList.contains("active")) {
-      icon.classList.remove("active");
-      answer.style.maxHeight = null;
-      answer.style.marginTop = "0";
-    } else {
-      icon.classList.add("active");
-      answer.style.maxHeight = answer.scrollHeight + "px";
-      answer.style.marginTop = "2rem";
-    }
+accordions.forEach(accordion => {
+  const question = accordion.querySelector('.question');
+  const answer = accordion.querySelector('.answer');
+  const icon = accordion.querySelector('#faq-icon');
+  
+  question.addEventListener('click', () => {
+    // Close all other accordions
+    accordions.forEach(item => {
+      if (item !== accordion) {
+        const itemAnswer = item.querySelector('.answer');
+        const itemIcon = item.querySelector('#faq-icon');
+        const itemQuestion = item.querySelector('.question');
+        
+        itemAnswer.classList.remove('active');
+        itemIcon.classList.remove('active');
+        itemQuestion.classList.remove('active');
+      }
+    });
+    
+    // Toggle current accordion
+    answer.classList.toggle('active');
+    icon.classList.toggle('active');
+    question.classList.toggle('active');
   });
 });
 

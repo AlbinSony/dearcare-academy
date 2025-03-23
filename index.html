@@ -71,15 +71,14 @@
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="header" id="header">
         <nav class="navbar container flexitem">
-            <a href="index.html"><img src="assets/images/removedbg.png" loading="lazy" alt="DearCare Logo" width="180" class="nav-logo-img"></a>
+            <a href="index.html" aria-label="DearCare Academy Homepage"><img src="assets/images/removedbg.png" loading="lazy" alt="DearCare Logo" width="180" height="auto" class="nav-logo-img"></a>
             <div class="nav-menu" id="nav-menu">
-                <i class="fa-solid fa-xmark" id="nav-close"></i>
+                <i class="fa-solid fa-xmark" id="nav-close" aria-label="Close menu"></i>
                 <ul class="nav-list flexitem">
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#popular" class="nav-link">Courses</a></li>
                     <li><a href="#learn" class="nav-link">About</a></li>
                     <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-
                     <li><a href="#faq" class="nav-link">FAQs</a></li>
                     <li><a href="#contact" class="nav-link">Contact Us</a></li>
                 </ul>
@@ -87,7 +86,7 @@
             <div class="nav-action flexitem">
                 <button class="btn nav-btn" id="login-toggle">Register</button>
             </div>
-            <i class="fa-solid fa-bars" id="nav-toggle"></i>
+            <i class="fa-solid fa-bars" id="nav-toggle" aria-label="Open menu"></i>
         </nav>
     </header>
     <!-- ============================================================ MAIN ============================================================ -->
@@ -98,7 +97,7 @@
                 <div class="home-content">
                     <h1 class="home-title">Welcome to <span class="span">Dear<span class="orange-c">C</span>are Academy</span> Empowering Care, Shaping Futures</h1>
                     <p class="home-description">
-                        Embark on a seamless learning experience with our state-of-the-art platform. Explore expertly crafted courses designed to inspire, challenge, and empower nurses and home nurses for a successful career in healthcare and placement.
+                        Embark on a rewarding learning journey with our healthcare training platform. Expert courses designed to empower nurses and healthcare professionals for successful careers.
                     </p>
                     <div class="home-action flexitem">
                         <button class="btn">Register Now</button>
@@ -109,11 +108,11 @@
                             <p class="home-details-desc">Active Learners</p>
                         </div>
                         <div class="home-sub-details">
-                            <h4 class="home-details-title">500+</</h4>
+                            <h4 class="home-details-title">500+</h4>
                             <p class="home-details-desc">Total Students</p>
                         </div>
                         <div class="home-sub-details">
-                            <h4 class="home-details-title">4</</h4>
+                            <h4 class="home-details-title">4</h4>
                             <p class="home-details-desc">Total Courses</p>
                         </div>
                     </div>
@@ -197,7 +196,7 @@
                     <p class="learning-description">
                         With experienced faculty, state-of-the-art facilities, and strong industry connections, we ensure our students receive the best possible education and placement support in the healthcare sector.
                     </p>
-                    <div class="learning-actions flexitem">
+                    <div class="learning-actions flexitem p-2">
                         
                         <a href="#popular"><button class="btn">View Courses</button></a>
                     </div>
@@ -274,7 +273,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Keep existing navigation arrows -->
+                    <!-- Add navigation buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -420,7 +421,7 @@
     </footer>
     <div class="footer-bottom text-center">
         <div class="footer-copy">
-            <p class="footer-info">&copy; Made with <i class="fa-solid fa-heart" id="heart-icon"></i>by <a href="www.growisen.com">Growisen</a> </p>
+            <p class="footer-info">&copy; Made with <i class="fa-solid fa-heart" id="heart-icon"></i> by <a href="www.growisen.com">Growisen</a> </p>
         </div>
     </div>
 
