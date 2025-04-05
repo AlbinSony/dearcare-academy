@@ -55,7 +55,7 @@ input, button {border: none; outline: none; font-family: var(--first-font);}
 h1, h2, h3, h4 {font-family: var(--second-font);}
 
 /* CSS UTILITY CLASSES */
-.container {max-width: 1400px; width: 100%; overflow: hidden; padding-inline: 0.75rem; margin-inline: auto;}
+.container {max-width: 100vw; width: 100%; overflow: hidden; padding-inline: 0.75rem; margin-inline: auto;}
 .section {padding: 5rem 2.5rem;}
 .flexitem {display: flex; align-items: center;}
 .grid {display: grid; gap: 2rem;}
@@ -229,50 +229,132 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 
 /* Adjust for home section spacing */
 .home {
-  margin-top: 8rem; /* Keep this to account for the header */
+  margin-top: 9rem; 
   position: relative;
-  min-height: calc(100vh - var(--header-height));
+  min-height: auto; /* Remove fixed height calculation */
   display: flex;
   align-items: center;
-  padding: 0 6rem 6rem; /* Reduced top padding to 0 and bottom padding to 6rem */
+  padding: 2rem 6rem 4rem; /* Reduced bottom padding */
   overflow: visible; 
+  background: linear-gradient(180deg, #ffffff 0%, rgba(247,250,255,0.5) 100%);
 }
 
 .home-container {
-  grid-template-columns: 1.5fr 1fr;  
+  grid-template-columns: 1.2fr 0.8fr; /* Adjust ratio to give more space to content */  
   align-items: center; 
-  gap: 2rem;
+  gap: 1rem; /* Reduce gap between columns */
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .home-content {
-  padding: 0 0 2rem 0; /* Reduced padding to remove unnecessary space */
+  padding: 0 0 1rem 0; /* Reduce bottom padding */
+  max-width: 700px; /* Increase max-width from 600px */
+  z-index: 2;
 }
 
 .home-title {
-  font-size: var(--h1-font-size);
-  line-height: 1.1;
-  margin-bottom: 1.5rem; 
+  font-size: var(--h2-font-size);
+  line-height: 1.2;
+  margin-bottom: 1rem; /* Reduced from 2rem */
+  position: relative;
 }
 
-.home-description {padding-block: 1.2rem; font-size: var(--normal-font-size); line-height: 1.5; max-width: 95%;}
-.home-action {gap: 2rem;}
-.home-action-btn {color: var(--text-color); gap: 0.6rem;}
-.home-details-title {font-size: var(--sub-heading-size); font-weight: 600;}
-.home-sub-details {border-right: 1px solid #0000009c; padding-right: 1rem;}
-.home-details {gap: 1rem; margin-top: 2rem;}
-.home-details-desc {font-size: var(--small-font-size);}
-
-.home-img, .learning-img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--border-radius-1);
-  object-fit: contain;
+.home-description {
+  padding-block: 0.8rem; /* Reduced from 1.2rem */
+  font-size: var(--normal-font-size); 
+  line-height: 1.5; /* Slightly reduced from 1.6 */
+  max-width: 95%; /* Increased from 90% */
+  color: var(--text-light-color);
 }
+
+.home-action {
+  gap: 2rem;
+  margin-top: 0.5rem; /* Reduced from 1rem */
+}
+
+.home-img-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .home-img {
-  max-height: 700px;
-  transform: scale(1.1);
-  margin: 0 auto;
-  transition: transform 0.3s ease;
+  max-height: 400px; /* Reduced from 450px */
+  width: auto;
+  object-fit: contain;
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative elements for home section */
+.home-shape {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.home-shape-1 {
+  right: 0;
+  top: 10%;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(45deg, rgba(72,193,86,0.1) 0%, rgba(28,121,194,0.1) 100%);
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.home-shape-2 {
+  left: 30%;
+  bottom: 5%;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(28,121,194,0.08) 0%, rgba(72,193,86,0.08) 100%);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  filter: blur(40px);
+}
+
+/* Animation for subtle movement */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Improved Apply Now button */
+.home-action .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 14px 32px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.home-action .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.home-action .btn:hover::before {
+  left: 0;
 }
 
 /* SEARCH, LOGIN & REGISTER PAGES */
@@ -371,7 +453,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   padding-inline: 2.5rem;
   padding-top: 0; /* Remove top padding */
   padding-bottom: 3rem;
-  margin-top: -90px; /* Create negative margin to overlap with hero section */
+  margin-top: -70px; /* Create negative margin to overlap with hero section */
   z-index: 10; /* Ensure it appears above other content */
 }
 
@@ -420,7 +502,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 
 /* Course Footer Styling */
 .course-card-footer {
-  padding: 1.2rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -460,7 +542,18 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 }
 
 /* Media Queries for Responsive Design */
+@media screen and (max-width: 1200px) {
+  .home {
+    padding: 1rem 4rem 3rem; /* Further reduced padding */
+  }
+  
+  .home-container {
+    gap: 0.5rem; /* Further reduce gap on smaller screens */
+  }
+}
+
 @media screen and (max-width: 992px) {
+
   .course-cards-grid {
     gap: 1.5rem;
   }
@@ -472,6 +565,10 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   /* Show hamburger menu on tablet and mobile */
   #nav-toggle {
     display: block;
+  }
+
+  .header-search-container{
+    display: none;
   }
   
   /* Hide desktop menu and show it differently on mobile */
@@ -573,17 +670,37 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   }
   
   .home {
+    margin-top: 2rem;
     padding: 0 4rem 5rem; /* Reduced padding for tablets */
   }
 }
 
 @media screen and (max-width: 767px) {
+  .home {
+    padding: 0 2rem 2.5rem; /* Further reduced padding */
+    margin-top: 4.5rem;
+  }
+  
+  .home-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem); /* Slightly reduced */
+    margin-bottom: 0.8rem; /* Reduced from 1rem */
+  }
+  
+  .home-description {
+    padding-block: 0.5rem; /* Reduced padding */
+  }
+  
+  .home-img {
+    max-height: 270px; /* Reduced height */
+    display: block; /* Ensure image is displayed */
+  }
+
   .header-top {
     display: none; /* Hide the search bar row on mobile */
   }
   
   .home {
-    margin-top: 3.5rem; 
+    margin-top: 0rem; 
     padding: 0 1.5rem 4rem; /* Reduced padding for mobile */
   }
   
@@ -663,56 +780,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     right: 1rem;
   }
   
-  .home {
-    padding-top: 2rem;
-  }
-  
-  .home-container {
-    grid-template-columns: 1fr; 
-    text-align: center;
-    margin: 0 auto;
-    width: 100%;
-  }
-  
-  .home-content {
-    padding: 0;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 100%;
-    text-align: center;
-  }
-  
-  .home-title {
-    font-size: clamp(2rem, 6.5vw, 2.8rem);
-    text-align: center;
-    margin: 0 auto 1.2rem;
-    width: 100%;
-    line-height: 1.2;
-    word-wrap: break-word;
-  }
-  
-  .home-img {display: none;}
-  
-  .home-action, .home-details {
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .home-description {
-    font-size: var(--normal-font-size); 
-    padding-block: 1.5rem; 
-    max-width: 100%; 
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .home-sub-details {
-    border-right: none; 
-    padding: 0.5rem; 
-    width: 45%;
-    text-align: center;
-  }
-  
   .popular {
     padding-inline: 1.5rem;
     padding-bottom: 2rem;
@@ -773,7 +840,31 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 
 @media screen and (max-width: 480px) {
   .home {
-    margin-top: 3rem;
+    padding: 0 1.5rem 2rem; /* Minimal padding for small screens */
+    margin-top: 4rem;
+  }
+  
+  .home-title {
+    font-size: clamp(1.6rem, 6vw, 2.2rem); /* Further reduced */
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  
+  .home-description {
+    font-size: clamp(0.85rem, 3vw, 0.95rem);
+    padding-block: 0.4rem;
+    line-height: 1.4;
+  }
+  
+  .home-img {
+    max-height: 230px;
+  }
+  
+  .home-action .btn {
+    padding: 10px 25px;
+  }
+
+  .home {
     padding: 0 1rem 4rem; /* Further reduced padding for small screens */
   }
   
@@ -869,9 +960,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 .learning-action-btn {gap: 0.5rem;}
 
 /* Enhance Learn section for small devices */
-@media screen and (max-width: 767px) {
-  /* ...existing code... */
-  
+@media screen and (max-width: 992px) {  
   .learn {
     padding: 3rem 1.5rem;
     overflow: hidden;
@@ -886,8 +975,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     width: 100%;
     max-height: 350px;
     border-radius: 15px;
-    object-fit: cover;
-    box-shadow: 0 10px 25px rgba(28, 121, 194, 0.15);
+    object-fit: contain;
     margin: 0 auto;
     order: -1; /* Display image before content on mobile */
   }
@@ -905,24 +993,11 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   .learning-content .sub-heading.gradient-text {
     font-size: clamp(1.8rem, 3vw, 1.3rem);
   }
-  
-  .learning-description {
-    font-size: clamp(0.85rem, 2.8vw, 1rem);
-    line-height: 1.7;
-    margin-bottom: 0.8rem;
-  }
 }
 
-@media screen and (max-width: 480px) {
-  /* ...existing code... */
-  
+@media screen and (max-width: 480px) {  
   .learn {
     padding: 2.5rem 1rem;
-  }
-  
-  .learning-img {
-    max-height: 250px;
-    margin-bottom: 0.5rem;
   }
   
   .learning-content .section-title {
@@ -1317,8 +1392,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 
 /* Media queries for responsive design */
 @media screen and (max-width: 767px) {
-  /* ...existing code... */
-
   .newsletter-container {
     padding: 2.5rem 1.5rem;
     border-radius: 15px;
@@ -1476,9 +1549,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   }
 }
 
-@media screen and (max-width: 480px) {
-  /* ...existing code... */
-  
+@media screen and (max-width: 480px) {  
   .faq {
     padding: 3rem 1.5rem;
   }
@@ -1618,7 +1689,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     font-size: clamp(0.75rem, 2.8vw, 0.8rem);
   }
 }
-/* ...existing code... */
 
 /* FOOTER SECTION */
 .footer {
@@ -1746,17 +1816,80 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     margin-left: 0; /* Reset the right alignment for medium screens */
     max-width: 100%;
   }
-  .popular { margin-top: -150px; } /* Adjust overlay for medium screens */
-  .social-quick-bar { display: none; } /* Hide social quick bar on medium screens and below */
+
+
+  .home {
+    margin-top: 10rem;
+    padding-top: 2rem;
+  }
+  
+  .home-container {
+    grid-template-columns: 1fr; 
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .home-content {
+    padding: 0;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px; /* Increased from 700px for tablet view */
+    order: 2;
+  }
+  
+  .home-title {
+    font-size: clamp(2rem, 6.5vw, 2.8rem);
+    text-align: center;
+    margin: 0 auto 1.2rem;
+    width: 100%;
+    line-height: 1.2;
+    word-wrap: break-word;
+  }
+  
+  .home-img {
+    display: none;
+  }
+  
+  .home-action, .home-details {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .home-description {
+    font-size: var(--normal-font-size); 
+    padding-block: 1.5rem; 
+    max-width: 100%; 
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .home-sub-details {
+    border-right: none; 
+    padding: 0.5rem; 
+    width: 45%;
+    text-align: center;
+  }
+
+/* Consolidate spacing and hide elements on medium screens */
+.popular { margin-top: 3rem; }
+.social-quick-bar { display: none; }
 }
 
 @media screen and (max-width: 480px) {
-  /* Combine related properties for learning section */
-  .learning-img { max-height: 300px; }
+  /* Optimize learning section styles */
+  .learning-img { 
+    max-height: 300px; 
+    margin-bottom: 0.5rem;
+  }
   .learning-content .section-title { padding-block: 1rem; }
   .learning-description { font-size: clamp(0.8rem, 3vw, 0.95rem); }
   
-  /* Combine related properties for faq section */
+  /* Optimize FAQ section styles */
   .faq { padding: 3rem 1rem; }
   .accordion-container { margin-top: 2rem; }
   .question { padding: 1rem 1.2rem; }
@@ -1764,12 +1897,12 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   #faq-icon { font-size: 1rem; width: 25px; height: 25px; }
   .answer.active { padding: 0 1.2rem 1rem; }
   
-  /* Combine related properties for newsletter section */
+  /* Optimize newsletter section styles */
   .newsletter-container { padding: 1.5rem 1rem; }
   .section-title { font-size: clamp(1.5rem, 6vw, 2rem); }
   .newsletter-description br { display: none; }
   
-  /* Combine related properties for home section */
+  /* Optimize home section styles */
   .home-details { flex-direction: column; align-items: center; }
   .home-sub-details { width: 80%; margin-bottom: 1rem; }
   .popular-box { padding: 1.2rem 1rem; }
@@ -1804,4 +1937,81 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 #nav-close:hover {
   color: var(--secondary-color);
   transform: rotate(90deg);
+}
+
+/* Floating Apply Now Button */
+.apply-now-floating {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 999;
+}
+
+.floating-container {
+  filter: drop-shadow(0 5px 15px rgba(28, 121, 194, 0.3));
+}
+
+.floating-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(90deg, rgba(28,121,194,1) 37%, rgba(72,193,86,1) 95%);
+  color: white;
+  border-radius: 50px;
+  padding: 12px 25px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(28, 121, 194, 0.2);
+}
+
+.floating-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(28, 121, 194, 0.4);
+}
+
+.floating-button .apply-text {
+  font-size: 16px;
+}
+
+.floating-button i {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.floating-button:hover i {
+  transform: translateX(3px);
+}
+
+/* Media queries for responsive floating button */
+@media screen and (max-width: 767px) {
+  .apply-now-floating {
+    bottom: 40px;
+    right: 40px;
+  }
+  
+  .floating-button {
+    padding: 10px 20px;
+  }
+  
+  .floating-button .apply-text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .apply-now-floating {
+    bottom: 30px;
+    right: 30px;
+  }
+  
+  .floating-button {
+    padding: 8px 16px;
+  }
+  
+  .floating-button .apply-text {
+    font-size: 13px;
+  }
 }
