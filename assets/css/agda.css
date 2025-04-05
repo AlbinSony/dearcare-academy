@@ -85,6 +85,7 @@ body {
     margin-bottom: 1.5rem;
     background: linear-gradient(45deg, var(--accent-teal), var(--secondary-gold));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.5px;
     line-height: 1.2;

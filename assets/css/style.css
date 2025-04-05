@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap");
 
 /* CSS ROOT VARIABLES */
 :root {
@@ -15,8 +15,8 @@
   --body-color: #fff;
   --header-height: 5rem;
   /* Typography */
-  --first-font: "Poppins", sans-serif;
-  --second-font: "Hammersmith One", sans-serif;
+  --first-font: "Inter", sans-serif;
+  --second-font: "Montserrat", sans-serif;
   
   /* Responsive Font Sizes using clamp() for fluid typography */
   --h1-font-size: clamp(2.6rem, 5vw, 4.2rem);
@@ -46,6 +46,9 @@ body {
   color: var(--text-color);
   font-family: var(--first-font);
   background: var(--body-color);
+}
+.main {
+  overflow-x: hidden;
 }
 body::-webkit-scrollbar {width: 0.5rem;}
 body::-webkit-scrollbar-thumb {background: var(--secondary-color); border-radius: 2px;}
@@ -161,7 +164,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   transition: all 0.3s ease;
 }
 
-.nav-search-input:focus {
+.nav-search-input:focus {                                                                                                                                                                                                                                                                                                                                                   
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
   background-color: #f5f5f5;
 }
@@ -796,7 +799,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   .testimonial-user {width: 80px; height: 80px;}
   .swiper-button-next, .swiper-button-prev {display: none !important;}
   
-  .faq-question {font-size: clamp(0.9rem, 3vw, 1.1rem);}
   .accordion {padding: 1.3rem 1.5rem;}
   .answer {font-size: var(--small-font-size);}
   
@@ -908,15 +910,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   .testimonial-box-data {width: 95%; padding: 1.5rem 1rem;}
   .testimonial-user {width: 70px; height: 70px;}
 }
-
-.popular-description {display: none;}
-.popular-courses-grid {display: none;}
-.popular-box {display: none;}
-.popular-box-heading {display: none;}
-.popular-head-primary, .popular-head-secondary {display: none;}
-.popular-box-description {display: none;}
-#heading-arrow {display: none;}
-.popular-btn {display: none;}
 
 /* Keep the existing animations for consistency with the rest of the site */
 @keyframes cardFadeIn {
@@ -1126,7 +1119,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   overflow: hidden;
 }
 
-/* Remove the ::before and ::after pseudo-elements */
 .faq::before, .faq::after {
   display: none;
 }
@@ -1195,7 +1187,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 }
 
 .faq-question {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(1rem, 1.5vw, 1rem);
   font-weight: 500;
   color: var(--text-dark-color);
   transition: color 0.3s ease;
@@ -1390,7 +1382,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   transform: none;
 }
 
-/* Media queries for responsive design */
 @media screen and (max-width: 767px) {
   .newsletter-container {
     padding: 2.5rem 1.5rem;
@@ -1425,11 +1416,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   .faq-subtitle {
     font-size: 1rem;
     padding: 0 1rem;
-  }
-  
-  .faq-question {
-    font-size: clamp(0.9rem, 3vw, 1.1rem);
-    padding-right: 30px;
   }
   
   .question {
@@ -1560,11 +1546,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   
   .question {
     padding: 1.2rem 1.3rem;
-  }
-  
-  .faq-question {
-    font-size: clamp(0.85rem, 3.2vw, 1rem);
-    max-width: 85%;
   }
   
   #faq-icon {
@@ -1811,7 +1792,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   /* Adjust header and home padding for medium screens */
   .header-top { padding: 0.8rem 4rem 0; }
   .navbar { padding: 0 2rem; }
-  .home { padding: 0 4rem 5rem; } /* Reduced padding for medium screens */
+  .home { padding: 0 2rem 5rem; } /* Reduced padding for medium screens */
   .home-content { 
     margin-left: 0; /* Reset the right alignment for medium screens */
     max-width: 100%;
