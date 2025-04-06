@@ -542,3 +542,49 @@ body {
 
 /* Import fonts from style.css */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap");
+
+/* Additional styling for the enquiry form success message */
+.return-home {
+    margin-top: 1.5rem;
+}
+
+.return-home .btn {
+    display: inline-block;
+    background: var(--body-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.return-home .btn:hover {
+    background: var(--primary-color);
+    color: var(--body-color);
+    transform: translateY(-3px);
+}
+
+/* Make the enquiry form more compact */
+#enquiryForm .form-section {
+    padding: 2rem;
+}
+
+#enquiryForm textarea {
+    min-height: 120px;
+}
+
+/* Responsive adjustments for the enquiry form */
+@media (max-width: 768px) {
+    #enquiryForm .form-section {
+        padding: 1.5rem;
+    }
+    
+    #enquiryForm .return-home {
+        margin-top: 1rem;
+    }
+    
+    #enquiryForm .return-home .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
