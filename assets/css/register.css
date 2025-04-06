@@ -356,6 +356,47 @@ input[type="file"]:hover {
     animation: slideUp 0.5s ease;
 }
 
+.success-message i {
+    font-size: 3rem;
+    color: #10b981;
+    margin-bottom: 1rem;
+}
+
+.success-message h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #065f46;
+}
+
+/* Error Message Styles */
+.error-message {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    background: #fee2e2;
+    border-radius: 8px;
+    margin-top: 2rem;
+    color: #991b1b;
+    font-family: var(--first-font);
+}
+
+.error-message.show {
+    display: block;
+    animation: slideUp 0.5s ease;
+}
+
+.error-message i {
+    font-size: 3rem;
+    color: #ef4444;
+    margin-bottom: 1rem;
+}
+
+.error-message h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #991b1b;
+}
+
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -365,6 +406,16 @@ input[type="file"]:hover {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
 }
 
 /* Page Transition Animation */

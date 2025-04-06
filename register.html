@@ -56,26 +56,38 @@
                         <input type="text" id="fullName" name="fullName" required>
                     </div>
                     <div class="form-group">
+                        <label for="course">Course*</label>
+                        <select id="course" name="course" required>
+                            <option value="">Select Course</option>
+                            <option value="Advanced General Nursing Assistant (AGDA)">Advanced General Nursing Assistant (AGDA)</option>
+                            <option value="Diploma in Healthcare Assistance">Diploma in Healthcare Assistance</option>
+                            <option value="Ayurveda Nursing & Baby Care">Ayurveda Nursing & Baby Care</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="dob">Date of Birth*</label>
-                        <input type="date" id="dob" name="dob" required>
+                        <input type="date" id="dob" name="dateOfBirth" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age*</label>
+                        <input type="text" id="age" name="age" readonly required>
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender*</label>
                         <select id="gender" name="gender" required>
                             <option value="">Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="maritalStatus">Marital Status*</label>
                         <select id="maritalStatus" name="maritalStatus" required>
                             <option value="">Select Status</option>
-                            <option value="single">Single</option>
-                            <option value="married">Married</option>
-                            <option value="divorced">Divorced</option>
-                            <option value="widowed">Widowed</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Separated">Separated</option>
                         </select>
                     </div>
                 </div>
@@ -103,7 +115,21 @@
                     </div>
                     <div class="form-group">
                         <label for="motherTongue">Mother Tongue*</label>
-                        <input type="text" id="motherTongue" name="motherTongue" required>
+                        <select id="motherTongue" name="motherTongue" required>
+                            <option value="">Select Language</option>
+                            <option value="English">English</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Malayalam">Malayalam</option>
+                            <option value="Tamil">Tamil</option>
+                            <option value="Telugu">Telugu</option>
+                            <option value="Kannada">Kannada</option>
+                            <option value="Bengali">Bengali</option>
+                            <option value="Marathi">Marathi</option>
+                            <option value="Gujarati">Gujarati</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Punjabi">Punjabi</option>
+                            <option value="Odia">Odia</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="knownLanguages">Known Languages</label>
@@ -117,11 +143,11 @@
                         <label for="category">Category*</label>
                         <select id="category" name="category" required>
                             <option value="">Select Category</option>
-                            <option value="general">General</option>
-                            <option value="obc">OBC</option>
-                            <option value="sc">SC</option>
-                            <option value="st">ST</option>
-                            <option value="other">Other</option>
+                            <option value="General">General</option>
+                            <option value="OBC">OBC</option>
+                            <option value="SC">SC</option>
+                            <option value="ST">ST</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                 </div>
@@ -137,7 +163,7 @@
                     </div>
                     <div class="form-group">
                         <label for="mobile">Mobile Number*</label>
-                        <input type="tel" id="mobile" name="mobile" required>
+                        <input type="tel" id="mobile" name="mobileNumber" required>
                     </div>
                 </div>
                 
@@ -150,7 +176,7 @@
                         </div>
                         <div class="form-group">
                             <label for="currentPin">PIN Code*</label>
-                            <input type="text" id="currentPin" name="currentPin" required>
+                            <input type="text" id="currentPin" name="currentPinCode" required>
                         </div>
                     </div>
                 </div>
@@ -168,7 +194,7 @@
                         </div>
                         <div class="form-group">
                             <label for="permanentPin">PIN Code*</label>
-                            <input type="text" id="permanentPin" name="permanentPin" required>
+                            <input type="text" id="permanentPin" name="permanentPinCode" required>
                         </div>
                     </div>
                 </div>
@@ -177,24 +203,72 @@
             <!-- Academic Information -->
             <section class="form-section">
                 <h2><i class="fas fa-graduation-cap"></i> Academic Information</h2>
-                <div class="dynamic-section" id="academicSection">
-                    <div class="academic-entry form-grid">
-                        <div class="form-group">
-                            <label>Qualification*</label>
-                            <input type="text" name="qualification[]" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Institution*</label>
-                            <input type="text" name="institution[]" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Year of Passing*</label>
-                            <input type="text" name="yearOfPassing[]" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Percentage/Grade*</label>
-                            <input type="text" name="grade[]" required>
-                        </div>
+                
+                <h3>SSLC (10th Grade)</h3>
+                <div class="form-grid academic-entry">
+                    <div class="form-group">
+                        <label for="sslc-institution">Institution*</label>
+                        <input type="text" id="sslc-institution" name="sslc-institution" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sslc-year">Year of Passing*</label>
+                        <input type="text" id="sslc-year" name="sslc-year" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sslc-grade">Percentage/Grade*</label>
+                        <input type="text" id="sslc-grade" name="sslc-grade" required>
+                    </div>
+                </div>
+                
+                <h3>HSC (12th Grade)</h3>
+                <div class="form-grid academic-entry">
+                    <div class="form-group">
+                        <label for="hsc-institution">Institution*</label>
+                        <input type="text" id="hsc-institution" name="hsc-institution" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hsc-year">Year of Passing*</label>
+                        <input type="text" id="hsc-year" name="hsc-year" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hsc-grade">Percentage/Grade*</label>
+                        <input type="text" id="hsc-grade" name="hsc-grade" required>
+                    </div>
+                </div>
+                
+                <h3>GDA (If applicable)</h3>
+                <div class="form-grid academic-entry">
+                    <div class="form-group">
+                        <label for="gda-institution">Institution</label>
+                        <input type="text" id="gda-institution" name="gda-institution">
+                    </div>
+                    <div class="form-group">
+                        <label for="gda-year">Year of Passing</label>
+                        <input type="text" id="gda-year" name="gda-year">
+                    </div>
+                    <div class="form-group">
+                        <label for="gda-grade">Percentage/Grade</label>
+                        <input type="text" id="gda-grade" name="gda-grade">
+                    </div>
+                </div>
+                
+                <h3>Others (If applicable)</h3>
+                <div class="form-grid academic-entry">
+                    <div class="form-group">
+                        <label for="other-qualification">Qualification</label>
+                        <input type="text" id="other-qualification" name="other-qualification">
+                    </div>
+                    <div class="form-group">
+                        <label for="other-institution">Institution</label>
+                        <input type="text" id="other-institution" name="other-institution">
+                    </div>
+                    <div class="form-group">
+                        <label for="other-year">Year of Passing</label>
+                        <input type="text" id="other-year" name="other-year">
+                    </div>
+                    <div class="form-group">
+                        <label for="other-grade">Percentage/Grade</label>
+                        <input type="text" id="other-grade" name="other-grade">
                     </div>
                 </div>
             </section>
@@ -204,20 +278,20 @@
                 <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
                 <div class="form-grid">
                     <div class="form-group">
-                        <label>Organization Name</label>
-                        <input type="text" name="organization">
+                        <label for="organization">Organization Name</label>
+                        <input type="text" id="organization" name="organization">
                     </div>
                     <div class="form-group">
-                        <label>Role/Designation</label>
-                        <input type="text" name="role">
+                        <label for="role">Role/Designation</label>
+                        <input type="text" id="role" name="role">
                     </div>
                     <div class="form-group">
-                        <label>Duration</label>
-                        <input type="text" name="duration">
+                        <label for="duration">Duration (months)</label>
+                        <input type="text" id="duration" name="duration">
                     </div>
                     <div class="form-group full-width">
-                        <label>Responsibilities</label>
-                        <textarea name="responsibilities"></textarea>
+                        <label for="responsibilities">Responsibilities</label>
+                        <textarea id="responsibilities" name="responsibilities"></textarea>
                     </div>
                 </div>
             </section>
@@ -232,7 +306,7 @@
                     </div>
                     <div class="form-group">
                         <label for="relationship">Relationship*</label>
-                        <input type="text" id="relationship" name="relationship" required>
+                        <input type="text" id="relationship" name="guardianRelation" required>
                     </div>
                     <div class="form-group">
                         <label for="guardianContact">Contact Number*</label>
@@ -251,7 +325,7 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="aadhar">Aadhar Number*</label>
-                        <input type="text" id="aadhar" name="aadhar" required>
+                        <input type="text" id="aadhar" name="guardianAadhar" required>
                     </div>
                     <div class="form-group">
                         <label for="healthStatus">Current Health Status</label>
@@ -269,25 +343,25 @@
                 <h2><i class="fas fa-upload"></i> Document Uploads</h2>
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="photo">Photo*</label>
-                        <input type="file" id="photo" name="photo" accept="image/*" required>
+                        <label for="photo">Photo* (JPEG format)</label>
+                        <input type="file" id="photo" name="photo" accept="image/jpeg" required>
                     </div>
                     <div class="form-group">
-                        <label for="documents">Documents*</label>
-                        <input type="file" id="documents" name="documents" multiple required>
+                        <label for="documents">Documents* (PDF format)</label>
+                        <input type="file" id="documents" name="documents" accept="application/pdf" required>
                     </div>
                     <div class="form-group">
-                        <label for="nocCertificate">NOC Certificate</label>
-                        <input type="file" id="nocCertificate" name="nocCertificate">
+                        <label for="nocCertificate">NOC Certificate (if applicable)</label>
+                        <input type="file" id="nocCertificate" name="nocCertificate" accept="application/pdf">
                     </div>
                     <div class="form-group">
                         <label for="nocStatus">NOC Certificate Status*</label>
                         <select id="nocStatus" name="nocStatus" required>
                             <option value="">Select Status</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                            <option value="applied">Applied</option>
-                            <option value="going-to-apply">Going to Apply</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Applied">Applied</option>
+                            <option value="Going To Apply">Going to Apply</option>
                         </select>
                     </div>
                 </div>
@@ -299,20 +373,52 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="sourceInfo">Source of Information*</label>
-                        <input type="text" id="sourceInfo" name="sourceInfo" required>
+                        <select id="sourceInfo" name="sourceOfInformation" required>
+                            <option value="">Select Source</option>
+                            <option value="Leads From Facebook">Leads From Facebook</option>
+                            <option value="Leads From IVR">Leads From IVR</option>
+                            <option value="Leads From WhatsApp">Leads From WhatsApp</option>
+                            <option value="Phone Landline">Phone Landline</option>
+                            <option value="Justdial">Justdial</option>
+                            <option value="Newspaper">Newspaper</option>
+                            <option value="Client Reference">Client Reference</option>
+                            <option value="Sulekha">Sulekha</option>
+                            <option value="Direct Entry">Direct Entry</option>
+                            <option value="Lead From CSV">Lead From CSV</option>
+                            <option value="Referred By Person">Referred By Person</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="agent">Assigning Agent</label>
-                        <input type="text" id="agent" name="agent">
+                        <input type="text" id="agent" name="assigningAgent">
                     </div>
                     <div class="form-group">
                         <label for="priority">Priority*</label>
                         <select id="priority" name="priority" required>
                             <option value="">Select Priority</option>
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
+                            <option value="High">High</option>
+                            <option value="Low">Low</option>
+                            <option value="Negative">Negative</option>
+                            <option value="Normal">Normal</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status*</label>
+                        <select id="status" name="status" required>
+                            <option value="">Select Status</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Follow-up">Follow-up</option>
+                            <option value="New">New</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sourceCategory">Source Category</label>
+                        <input type="text" id="sourceCategory" name="sourceCategory">
+                    </div>
+                    <div class="form-group">
+                        <label for="sourceSubCategory">Source Sub-Category</label>
+                        <input type="text" id="sourceSubCategory" name="sourceSubCategory">
                     </div>
                 </div>
             </section>
@@ -325,81 +431,81 @@
                         <label>Home Care Assistant</label>
                         <select name="homeCare" required>
                             <option value="">Select</option>
-                            <option value="interested">Interested</option>
-                            <option value="partial">Partial</option>
-                            <option value="not-interested">Not Interested</option>
+                            <option value="Interested">Interested</option>
+                            <option value="Partially, If Trained">Partially, If Trained</option>
+                            <option value="Not Interested">Not Interested</option>
                         </select>
                     </div>
                     <div class="preference-item">
                         <label>Delivery Care Assistant</label>
                         <select name="deliveryCare" required>
                             <option value="">Select</option>
-                            <option value="interested">Interested</option>
-                            <option value="partial">Partial</option>
-                            <option value="not-interested">Not Interested</option>
+                            <option value="Interested">Interested</option>
+                            <option value="Partially, If Trained">Partially, If Trained</option>
+                            <option value="Not Interested">Not Interested</option>
                         </select>
                     </div>
                     <div class="preference-item">
                         <label>Old Age Home/Rehabilitation Center</label>
                         <select name="oldAgeHome" required>
                             <option value="">Select</option>
-                            <option value="interested">Interested</option>
-                            <option value="partial">Partial</option>
-                            <option value="not-interested">Not Interested</option>
+                            <option value="Interested">Interested</option>
+                            <option value="Partially, If Trained">Partially, If Trained</option>
+                            <option value="Not Interested">Not Interested</option>
                         </select>
                     </div>
                     <div class="preference-item">
                         <label>Hospital Care</label>
                         <select name="hospitalCare" required>
                             <option value="">Select</option>
-                            <option value="interested">Interested</option>
-                            <option value="partial">Partial</option>
-                            <option value="not-interested">Not Interested</option>
+                            <option value="Interested">Interested</option>
+                            <option value="Partially, If Trained">Partially, If Trained</option>
+                            <option value="Not Interested">Not Interested</option>
                         </select>
                     </div>
                     <div class="preference-item">
                         <label>Critical Illness Care Assistant</label>
                         <select name="criticalCare" required>
                             <option value="">Select</option>
-                            <option value="interested">Interested</option>
-                            <option value="partial">Partial</option>
-                            <option value="not-interested">Not Interested</option>
+                            <option value="Interested">Interested</option>
+                            <option value="Partially, If Trained">Partially, If Trained</option>
+                            <option value="Not Interested">Not Interested</option>
                         </select>
                     </div>
                     <div class="preference-item">
                         <label>ICU Home Care Assistant</label>
                         <select name="icuCare" required>
                             <option value="">Select</option>
-                            <option value="interested">Interested</option>
-                            <option value="partial">Partial</option>
-                            <option value="not-interested">Not Interested</option>
+                            <option value="Interested">Interested</option>
+                            <option value="Partially, If Trained">Partially, If Trained</option>
+                            <option value="Not Interested">Not Interested</option>
                         </select>
                     </div>
                     <div class="preference-item">
                         <label>Senior Citizens Assistant</label>
                         <select name="seniorCare" required>
                             <option value="">Select</option>
-                            <option value="interested">Interested</option>
-                            <option value="partial">Partial</option>
-                            <option value="not-interested">Not Interested</option>
+                            <option value="Interested">Interested</option>
+                            <option value="Partially, If Trained">Partially, If Trained</option>
+                            <option value="Not Interested">Not Interested</option>
                         </select>
                     </div>
                     <div class="preference-item">
                         <label>Companion Ship Assistant</label>
                         <select name="companionship" required>
                             <option value="">Select</option>
-                            <option value="interested">Interested</option>
-                            <option value="partial">Partial</option>
-                            <option value="not-interested">Not Interested</option>
+                            <option value="Interested">Interested</option>
+                            <option value="Partially, If Trained">Partially, If Trained</option>
+                            <option value="Not Interested">Not Interested</option>
                         </select>
                     </div>
                     <div class="preference-item">
                         <label>Clinical Assistant</label>
                         <select name="clinicalAssistant" required>
                             <option value="">Select</option>
-                            <option value="interested">Interested</option>
-                            <option value="partial">Partial</option>
-                            <option value="not-interested">Not Interested</option>
+                            <option value="Interested">Interested</option>
+                            <option value="Partially, If Trained">Partially, If Trained</option>
+                            <option value="Not Interested">Not Interested</option>
                         </select>
                     </div>
                 </div>
@@ -410,6 +516,20 @@
                 <button type="submit" class="btn submit-btn">
                     <i class="fas fa-paper-plane"></i> Submit Application
                 </button>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h3>Registration Successful!</h3>
+                <p>Your application has been submitted successfully. We'll get back to you soon.</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Submission Error</h3>
+                <p id="errorText">There was an error submitting your application. Please try again later.</p>
             </div>
         </form>
     </div>
@@ -426,6 +546,20 @@
             const scrolled = (winScroll / height) * 100;
             document.getElementById("progressBar").style.width = scrolled + "%";
         }
+
+        // Calculate age from date of birth
+        document.getElementById('dob').addEventListener('change', function() {
+            const dob = new Date(this.value);
+            const today = new Date();
+            let age = today.getFullYear() - dob.getFullYear();
+            const monthDiff = today.getMonth() - dob.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+            
+            document.getElementById('age').value = age.toString();
+        });
 
         // Same Address Checkbox functionality
         document.getElementById('sameAddress').addEventListener('change', function() {
@@ -468,6 +602,162 @@
                 navMenu.classList.remove('show-nav');
                 document.body.style.overflow = ''; // Restore scrolling
             });
+        });
+
+        // Form submission handler
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            document.querySelector('.form-submit').classList.add('loading');
+            
+            // Hide any previous messages
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('errorMessage').classList.remove('show');
+            
+            try {
+                // Create FormData object
+                const formData = new FormData(this);
+                
+                // Create the structured data object for the API
+                const apiData = {
+                    fullName: formData.get('fullName'),
+                    course: formData.get('course'),
+                    dateOfBirth: formData.get('dateOfBirth'),
+                    age: formData.get('age'),
+                    gender: formData.get('gender'),
+                    maritalStatus: formData.get('maritalStatus'),
+                    nationality: formData.get('nationality'),
+                    state: formData.get('state'),
+                    city: formData.get('city'),
+                    taluk: formData.get('taluk'),
+                    motherTongue: formData.get('motherTongue'),
+                    knownLanguages: formData.get('knownLanguages'),
+                    religion: formData.get('religion'),
+                    category: formData.get('category'),
+                    email: formData.get('email'),
+                    mobileNumber: formData.get('mobileNumber'),
+                    currentAddress: formData.get('currentAddress'),
+                    currentPinCode: formData.get('currentPinCode'),
+                    permanentAddress: formData.get('permanentAddress'),
+                    permanentPinCode: formData.get('permanentPinCode'),
+                    academics: {
+                        sslc: {
+                            institution: formData.get('sslc-institution'),
+                            year: formData.get('sslc-year'),
+                            grade: formData.get('sslc-grade')
+                        },
+                        hsc: {
+                            institution: formData.get('hsc-institution'),
+                            year: formData.get('hsc-year'),
+                            grade: formData.get('hsc-grade')
+                        },
+                        gda: {
+                            institution: formData.get('gda-institution') || '',
+                            year: formData.get('gda-year') || '',
+                            grade: formData.get('gda-grade') || ''
+                        },
+                        others: {
+                            qualification: formData.get('other-qualification') || '',
+                            institution: formData.get('other-institution') || '',
+                            year: formData.get('other-year') || '',
+                            grade: formData.get('other-grade') || ''
+                        }
+                    },
+                    organization: formData.get('organization') || '',
+                    role: formData.get('role') || '',
+                    duration: formData.get('duration') || '',
+                    responsibilities: formData.get('responsibilities') || '',
+                    guardianName: formData.get('guardianName'),
+                    guardianRelation: formData.get('guardianRelation'),
+                    guardianContact: formData.get('guardianContact'),
+                    guardianAddress: formData.get('guardianAddress'),
+                    guardianAadhar: formData.get('guardianAadhar'),
+                    healthStatus: formData.get('healthStatus') || '',
+                    disability: formData.get('disability') || '',
+                    nocStatus: formData.get('nocStatus'),
+                    sourceOfInformation: formData.get('sourceOfInformation'),
+                    assigningAgent: formData.get('assigningAgent') || '',
+                    priority: formData.get('priority'),
+                    status: formData.get('status'),
+                    sourceCategory: formData.get('sourceCategory') || '',
+                    sourceSubCategory: formData.get('sourceSubCategory') || '',
+                    servicePreferences: {
+                        'Home Care Assistant': formData.get('homeCare'),
+                        'Delivery Care Assistant': formData.get('deliveryCare'),
+                        'Old Age Home/Rehabilitation Center': formData.get('oldAgeHome'),
+                        'Hospital Care': formData.get('hospitalCare'),
+                        'Critical Illness Care Assistant': formData.get('criticalCare'),
+                        'ICU Home Care Assistant': formData.get('icuCare'),
+                        'Senior Citizens Assistant': formData.get('seniorCare'),
+                        'Companion Ship Assistant': formData.get('companionship'),
+                        'Clinical Assistant': formData.get('clinicalAssistant')
+                    }
+                };
+                
+                // Add file data
+                const photoFile = document.getElementById('photo').files[0];
+                const documentsFile = document.getElementById('documents').files[0];
+                const nocCertificateFile = document.getElementById('nocCertificate').files[0];
+                
+                // Create a new FormData for the actual submission
+                const submitFormData = new FormData();
+                
+                // Add the JSON data
+                submitFormData.append('data', JSON.stringify(apiData));
+                
+                // Add the files
+                if (photoFile) {
+                    submitFormData.append('photo', photoFile);
+                }
+                
+                if (documentsFile) {
+                    submitFormData.append('documents', documentsFile);
+                }
+                
+                if (nocCertificateFile) {
+                    submitFormData.append('nocCertificate', nocCertificateFile);
+                }
+                
+                // Send the data to the API
+                const response = await fetch('https://dearcare-academy.vercel.app/api/register/students', {
+                    method: 'POST',
+                    body: submitFormData
+                });
+                
+                // Check if the response is OK
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to submit the form');
+                }
+                
+                // Handle successful submission
+                document.getElementById('successMessage').classList.add('show');
+                
+                // Reset form
+                document.getElementById('registrationForm').reset();
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                
+                // Show error message
+                document.getElementById('errorText').textContent = error.message || 'There was an error submitting your application. Please try again later.';
+                document.getElementById('errorMessage').classList.add('show');
+                
+                // Scroll to error message
+                document.getElementById('errorMessage').scrollIntoView({ behavior: 'smooth' });
+            } finally {
+                // Reset submit button
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
+                submitBtn.disabled = false;
+                document.querySelector('.form-submit').classList.remove('loading');
+            }
         });
     </script>
 </body>
