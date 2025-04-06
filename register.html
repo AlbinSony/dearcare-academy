@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DearCare Academy - Registration Form</title>
+    <!-- Import Poppins font to match index.html -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/register.css">
     <link rel="shortcut icon" href="assets/images/dearcare-favicon.png" type="image/x-icon">
@@ -16,10 +20,29 @@
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
+    <!-- Add header navigation matching index.html -->
+    <header class="header" id="header">
+        <nav class="navbar container flexitem">
+            <a href="index.html" aria-label="DearCare Academy Homepage"><img src="assets/images/academyNav.png" loading="lazy" alt="DearCare Logo" width="190" height="auto" class="nav-logo-img"></a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <i class="fa-solid fa-xmark" id="nav-close" aria-label="Close menu"></i>
+                <ul class="nav-list flexitem">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#popular" class="nav-link">Courses</a></li>
+                    <li><a href="index.html#learn" class="nav-link">About</a></li>
+                    <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="index.html#faq" class="nav-link">FAQs</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" id="nav-toggle" aria-label="Open menu"></i>
+        </nav>
+    </header>
+
     <div class="registration-container">
         <header class="form-header">
-            <img src="assets/images/removedbg.png" alt="DearCare Logo" class="form-logo">
-            <h1>Course Registration Form</h1>
+            <h1 class="gradient-text">Course Registration Form</h1>
             <p>Please fill in all the required information carefully</p>
         </header>
 
@@ -384,7 +407,7 @@
 
             <!-- Submit Button -->
             <div class="form-submit">
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="btn submit-btn">
                     <i class="fas fa-paper-plane"></i> Submit Application
                 </button>
             </div>
@@ -415,6 +438,36 @@
                 document.getElementById('permanentAddress').disabled = false;
                 document.getElementById('permanentPin').disabled = false;
             }
+        });
+
+        // Mobile Menu Toggle (matching index.html functionality)
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+
+        // Show mobile menu
+        if(navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-nav');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            });
+        }
+
+        // Hide mobile menu
+        if(navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-nav');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        }
+
+        // Close mobile menu when clicking on a nav link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-nav');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
         });
     </script>
 </body>

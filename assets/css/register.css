@@ -1,11 +1,46 @@
 /* Progress Bar Styles */
+:root {
+    /* Update colors to match style.css */
+    --accent-color: #ededed;
+    --primary-color: #1C79C2;
+    --secondary-color: #1f9dfe;
+    --text-dark-color: #1d1b1b;
+    --text-light-color: #3f3f3f;
+    --text-color: #1f2937;
+    --span-primary-color: #24ca6f;
+    --span-secondary-color: #ffb534;
+    --rating: #ffd700;
+    --body-color: #fff;
+
+    /* Typography matching style.css */
+    --first-font: "Inter", sans-serif;
+    --second-font: "Montserrat", sans-serif;
+
+    /* Responsive Font Sizes using clamp() for fluid typography */
+    --h1-font-size: clamp(2.6rem, 5vw, 4.2rem);
+    --h2-font-size: clamp(2rem, 4vw, 3rem);
+    --h3-font-size: clamp(1.5rem, 3vw, 2.2rem);
+    --sub-heading-size: clamp(1.1rem, 2vw, 1.6rem);
+    --normal-font-size: clamp(0.9rem, 1vw, 1rem);
+    --small-font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+
+    /* Additional variables for form styling */
+    --background-light: #f8f9fa;
+    --background-white: #ffffff;
+    --border-color: #eaeaea;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --success-color: #d1fae5;
+    --success-text: #065f46;
+    --form-bg: #f8f9fa;
+}
+
 .progress-container {
     position: fixed;
     top: 0;
     z-index: 1000;
     width: 100%;
     height: 4px;
-    background: #f1f1f1;
+    background: var(--background-light);
 }
 
 .progress-bar {
@@ -15,14 +50,25 @@
     transition: width 0.2s ease;
 }
 
+/* Gradient Text Style - Matching index.html */
+.gradient-text {
+    background: linear-gradient(90deg, rgba(28,121,194,1) 37%, rgba(72,193,86,1) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
 /* Form Container Styles */
 .registration-container {
     max-width: 1200px;
-    margin: 3rem auto;
+    margin: 8rem auto 3rem; /* Increased top margin to account for fixed header */
     padding: 2rem;
-    background: #fff;
+    background: var(--body-color);
     border-radius: 15px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 25px var(--shadow-color);
+    font-family: var(--first-font);
+    color: var(--text-color);
 }
 
 /* Form Header Styles */
@@ -30,9 +76,9 @@
     text-align: center;
     margin-bottom: 3rem;
     padding: 2rem;
-    background: linear-gradient(145deg, #f8f9fa, #ffffff);
+    background: linear-gradient(145deg, var(--background-light), var(--background-white));
     border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 2px 15px var(--shadow-color);
 }
 
 .form-logo {
@@ -48,58 +94,77 @@
 .form-header h1 {
     color: var(--primary-color);
     margin-bottom: 0.8rem;
-    font-size: 2.2rem;
+    font-size: var(--h3-font-size);
+    font-family: var(--second-font);
 }
 
 .form-header p {
-    color: #666;
-    font-size: 1.1rem;
+    color: var(--text-light-color);
+    font-size: var(--normal-font-size);
+    font-family: var(--first-font);
 }
 
 /* Form Section Styles */
 .form-section {
-    background: #ffffff;
+    background: var(--background-white);
     padding: 2.5rem;
     margin-bottom: 2rem;
     border-radius: 12px;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: var(--first-font);
 }
 
 .form-section:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 20px var(--shadow-color);
 }
 
 .form-section h2 {
-    color: var(--secondary-color);
-    margin-bottom: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #eaeaea;
-    padding-bottom: 1rem;
+    font-weight: 600;
+    font-family: var(--second-font);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
 }
 
 .form-section h2 i {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--span-primary-color);
     font-size: 1.8rem;
 }
 
-/* Form Input Styles */
+.form-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: var(--normal-font-size);
+    font-weight: 500;
+    font-family: var(--second-font);
+}
+
+/* Form Grid Layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
 }
 
 label {
     display: block;
-    margin-bottom: 0.8rem;
-    color: #444;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-family: var(--first-font);
 }
 
 input[type="text"],
@@ -110,19 +175,22 @@ select,
 textarea {
     width: 100%;
     padding: 1rem;
-    border: 2px solid #eaeaea;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     transition: all 0.3s ease;
-    font-size: 1rem;
-    background: #fafafa;
+    font-size: var(--normal-font-size);
+    background: var(--form-bg);
+    color: var(--text-color);
+    font-family: var(--first-font);
 }
 
 input:focus,
 select:focus,
 textarea:focus {
     border-color: var(--primary-color);
-    background: #fff;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    background: var(--background-white);
+    box-shadow: 0 0 0 4px rgba(28, 121, 194, 0.1);
+    outline: none;
 }
 
 /* Preference Items Styles */
@@ -133,16 +201,33 @@ textarea:focus {
 }
 
 .preference-item {
-    background: #fff;
+    background: var(--background-white);
     padding: 1.5rem;
     border-radius: 10px;
-    border: 2px solid #eaeaea;
+    border: 2px solid var(--border-color);
     transition: all 0.3s ease;
+    font-family: var(--first-font);
 }
 
 .preference-item:hover {
     border-color: var(--primary-color);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.preference-item label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Address Section Styles */
+.address-section {
+    background: var(--background-light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
 }
 
 /* Submit Button Styles */
@@ -151,29 +236,45 @@ textarea:focus {
     text-align: center;
 }
 
+/* Style matching the "Apply Now" button from index.html */
 .submit-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    background: linear-gradient(90deg, rgba(28,121,194,1) 37%, rgba(72,193,86,1) 95%);
+    color: var(--body-color);
     border: none;
     padding: 1.2rem 3rem;
     border-radius: 50px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: var(--normal-font-size);
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 5px 15px rgba(28, 121, 194, 0.2);
+    font-family: var(--first-font);
 }
 
 .submit-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 8px 25px rgba(28, 121, 194, 0.3);
 }
 
-.submit-btn i {
-    font-size: 1.2rem;
+/* Style to match the exact button from index.html */
+.btn {
+    background: linear-gradient(90deg, rgba(28,121,194,1) 37%, rgba(72,193,86,1) 95%);
+    color: var(--body-color);
+    padding: 12px 30px;
+    border-radius: var(--border-radius-1, 0.8rem);
+    cursor: pointer;
+    box-shadow: 0rem 0.5rem 1rem rgba(28, 121, 194, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 500;
+    font-family: var(--first-font);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.7rem 1.5rem rgba(28, 121, 194, 0.4);
 }
 
 /* Checkbox Styles */
@@ -183,9 +284,9 @@ textarea:focus {
     align-items: center;
     gap: 0.8rem;
     padding: 1rem;
-    background: #f8f9fa;
+    background: var(--background-light);
     border-radius: 8px;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--border-color);
 }
 
 .address-checkbox input[type="checkbox"] {
@@ -195,11 +296,26 @@ textarea:focus {
     accent-color: var(--primary-color);
 }
 
+/* File Input Styling */
+input[type="file"] {
+    padding: 0.8rem;
+    background: var(--background-light);
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-family: var(--first-font);
+}
+
+input[type="file"]:hover {
+    border-color: var(--primary-color);
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .registration-container {
-        margin: 0;
-        padding: 1rem;
+        margin: 6rem 0 0; /* Adjusted for mobile view */
+        padding: 0.5rem;
         border-radius: 0;
     }
 
@@ -228,10 +344,11 @@ textarea:focus {
     display: none;
     text-align: center;
     padding: 2rem;
-    background: #d1fae5;
+    background: var(--success-color);
     border-radius: 8px;
     margin-top: 2rem;
-    color: #065f46;
+    color: var(--success-text);
+    font-family: var(--first-font);
 }
 
 .success-message.show {
@@ -268,121 +385,21 @@ textarea:focus {
 }
 
 /* Enhanced Mobile Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .registration-container {
-        margin: 0;
-        padding: 0.5rem;
-    }
-
-    .form-header {
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .form-header h1 {
-        font-size: 1.8rem;
-    }
-
-    .form-section {
-        padding: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .form-grid {
-        gap: 0.8rem;
-    }
-
-    .preference-item {
-        padding: 1rem;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="date"],
-    select,
-    textarea {
-        padding: 0.8rem;
-        font-size: 16px; /* Prevents zoom on iOS */
-    }
-
-    .form-section h2 {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-    }
-
-    .form-section h2 i {
-        font-size: 1.5rem;
-    }
-
-    .submit-btn {
-        width: 100%;
-        padding: 1rem;
-        font-size: 1rem;
-    }
-
-    .preferences-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        margin-top: 7rem; /* Adjusted for tablet view */
     }
 }
 
-@media (max-width: 480px) {
-    .form-header h1 {
-        font-size: 1.5rem;
-    }
-
-    .form-header p {
-        font-size: 0.9rem;
-    }
-
-    .form-logo {
-        max-width: 150px;
-    }
-
-    label {
-        font-size: 0.9rem;
-    }
-}
-
-/* Loading Animation for Buttons */
-.loading-btn {
-    position: relative;
-    overflow: hidden;
-}
-
-.loading-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    animation: loading 1.5s infinite;
-}
-
-@keyframes loading {
-    100% {
-        left: 100%;
-    }
-}
-
-/* Add styles for form sections in mobile view */
 @media (max-width: 768px) {
     .address-section,
     .academic-section,
     .work-section {
-        background: #fff;
+        background: var(--background-white);
         border-radius: 12px;
         padding: 1rem;
         margin-bottom: 1rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 10px var(--shadow-color);
     }
 
     .address-checkbox {
@@ -423,14 +440,14 @@ textarea:focus {
         justify-content: center;
         align-items: center;
         gap: 0.8rem;
-        background: linear-gradient(135deg, #2563eb, #1d4ed8);
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        background: linear-gradient(90deg, rgba(28,121,194,1) 37%, rgba(72,193,86,1) 95%);
+        box-shadow: 0 4px 15px rgba(28, 121, 194, 0.2);
         transition: all 0.3s ease;
     }
 
     .submit-btn:active {
         transform: scale(0.98);
-        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.1);
+        box-shadow: 0 2px 10px rgba(28, 121, 194, 0.1);
     }
 
     .submit-btn i {
@@ -452,6 +469,10 @@ textarea:focus {
 
 /* Extra small screens */
 @media (max-width: 480px) {
+    .registration-container {
+        margin-top: 5rem; /* Further reduced for small mobile screens */
+    }
+
     .submit-btn {
         font-size: 1rem;
         padding: 0.9rem;
@@ -461,3 +482,12 @@ textarea:focus {
         font-size: 1.1rem;
     }
 }
+
+/* Ensure all text has proper font-family */
+body {
+    font-family: var(--first-font);
+    color: var(--text-color);
+}
+
+/* Import fonts from style.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap");
