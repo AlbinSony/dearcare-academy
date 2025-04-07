@@ -48,7 +48,6 @@
     ================================================================== -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/style.min.css">
-    <link rel="stylesheet" href="assets/css/agda.min.css">
 
     <link rel="shortcut icon" href="assets/images/dcfavicon.jpeg" type="image/x-icon">
     <!-- Preload critical assets -->
@@ -67,116 +66,116 @@
 </head>
 
 <body>
-
     <!-- ============================================================ HEADER ============================================================ -->
     <header class="header" id="header">
+        <!-- Add top row with search -->
+        <div class="header-top container">
+            <div class="header-search-container">
+                <div class="nav-search-container">
+                    <input type="text" class="nav-search-input" placeholder="Search courses...">
+                    <button class="nav-search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        
         <nav class="navbar container flexitem">
-            <a href="index.html"><img src="assets/images/removedbg.png" loading="lazy" alt="DearCare Logo" width="180" class="nav-logo-img"></a>
+            <a href="index.html" aria-label="DearCare Academy Homepage"><img src="assets/images/academyNav.png" loading="lazy" alt="DearCare Logo" width="190" height="auto" class="nav-logo-img"></a>
+            
             <div class="nav-menu" id="nav-menu">
-                <i class="fa-solid fa-xmark" id="nav-close"></i>
+                <i class="fa-solid fa-xmark" id="nav-close" aria-label="Close menu"></i>
                 <ul class="nav-list flexitem">
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#popular" class="nav-link">Courses</a></li>
                     <li><a href="#learn" class="nav-link">About</a></li>
                     <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-
                     <li><a href="#faq" class="nav-link">FAQs</a></li>
                     <li><a href="#contact" class="nav-link">Contact Us</a></li>
                 </ul>
             </div>
-            <div class="nav-action flexitem">
-                <button class="btn nav-btn" id="login-toggle">Register</button>
-            </div>
-            <i class="fa-solid fa-bars" id="nav-toggle"></i>
+            <i class="fa-solid fa-bars" id="nav-toggle" aria-label="Open menu"></i>
         </nav>
     </header>
     <!-- ============================================================ MAIN ============================================================ -->
     <main class="main">
         <!-- ============================================================ HOME ============================================================ -->
         <section class="home section" id="home">
+            <!-- Move social quick bar into hero section -->
+            <div class="social-quick-bar">
+                <a href="#" class="quick-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="quick-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="quick-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="quick-social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <!-- Add decorative shapes -->
+            <div class="home-shape home-shape-1"></div>
+            <div class="home-shape home-shape-2"></div>
+            
             <div class="home-container container grid">
                 <div class="home-content">
-                    <h1 class="home-title">Welcome to <span class="span">Dear<span class="orange-c">C</span>are Academy</span> Empowering Care, Shaping Futures</h1>
+                    <h1 class="home-title gradient-text">START YOUR CAREER IN HEALTHCARE TODAY!</h1>
                     <p class="home-description">
-                        Embark on a seamless learning experience with our state-of-the-art platform. Explore expertly crafted courses designed to inspire, challenge, and empower nurses and home nurses for a successful career in healthcare and placement.
+                        Join DearCare Academy for industry-recognized training in healthcare and nursing. 
+                        Our specialized courses empower you with practical skills for a successful medical career.
                     </p>
                     <div class="home-action flexitem">
-                        <button class="btn">Register Now</button>
-                    </div>
-                    <div class="home-details flexitem">
-                        <div class="home-sub-details">
-                            <h4 class="home-details-title">100+</h4>
-                            <p class="home-details-desc">Active Learners</p>
-                        </div>
-                        <div class="home-sub-details">
-                            <h4 class="home-details-title">500+</</h4>
-                            <p class="home-details-desc">Total Students</p>
-                        </div>
-                        <div class="home-sub-details">
-                            <h4 class="home-details-title">4</</h4>
-                            <p class="home-details-desc">Total Courses</p>
-                        </div>
+                        <a href="./enquiry.html" class="btn">Know more <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <img src="assets/images/Adobe Express - file.png" alt="" class="home-img">
+                
+                <div class="home-img-container">
+                    <img src="assets/images/Adobe Express - file.png" alt="Healthcare professional" class="home-img">
+                </div>
             </div>
         </section>
         <!-- ============================================================ POPULAR ============================================================ -->
         <section class="popular section" id="popular">
             <div class="popular-container container">
-                <h2 class="section-title border-bottom text-center">Popular Courses For You</h2>
-                <p class="popular-description text-center">
-                    Empower Your Nursing Career: Explore our top-rated courses, meticulously designed to meet healthcare industry demands.<br> From clinical skills to home nursing, gain expertise with engaging content and expert guidance.
-                </p>
-                <div class="popular-courses-grid grid">
-                    <div class="popular-box">
-                        <span class="popular-head-secondary">Transform Your Future in Healthcare!</span>
-                        <h3 class="popular-box-heading flexitem">
-                           AGDA course
-                           <a href="./agda.html">
-                            <i class="fa-solid fa-arrow-up-right-from-square" id="heading-arrow"></i></a>
-                        </h3>
-                        <p class="popular-box-description">
-                            The Advanced General Nursing Assistant (AGDA) Course is designed to equip 
-                            aspiring healthcare professionals with the knowledge, skills, and hands-on 
-                            experience required to excel in patient care. This program provides a compre
-                            hensive understanding of nursing fundamentals, medical procedures, and 
-                            specialized care techniques, ensuring students are well-prepared for a career 
-                            in the healthcare industry.
-                        </p>
-                    </div>
+                <div class="course-cards-grid">
+                    <!-- Ayurveda Nursing & Baby Care Course Card -->
+                    <a href="./anbc.html">
+                        <div class="course-card">
+                            <div class="course-card-image">
+                                <img src="assets/images/anbc-course.jpg" alt="Ayurveda Nursing & Baby Care" class="course-img">
+                            </div>
+                            <div class="course-card-footer">
+                                <h3 class="course-title">Ayurveda Nursing & Baby Care</h3>
+                                <!-- <a href="" class="course-link">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a> -->
+                            </div>
+                        </div>
+                    </a>
 
-                    <div class="popular-box">
-                        <span class="popular-head-secondary">Transform Your Future in Healthcare!</span>
-                        <h3 class="popular-box-heading flexitem">Diploma in Healthcare Assistance
-                              <a href="./dhca.html"><i
-                                class="fa-solid fa-arrow-up-right-from-square" id="heading-arrow"></i></h3></a>
-                        <p class="popular-box-description">
-                            Comprehensive diploma program covering patient care, medical procedures, and clinical skills. Master vital signs monitoring, infection control, and emergency response. Gain hands-on experience in hospitals and healthcare facilities with guaranteed placement support. Perfect for those seeking a rewarding career in healthcare assistance.
-                        </p>
-                    </div>
-
-                    <div class="popular-box">
-                        <span class="popular-head-secondary">Transform Your Future in Healthcare!</span>
-                        <h3 class="popular-box-heading flexitem">Sutika Paricharya Course 
-                            <a href="./sutika.html"><i
-                                class="fa-solid fa-arrow-up-right-from-square" id="heading-arrow"></i></a></h3>
-                        <p class="popular-box-description">
-                            Master traditional Ayurvedic postpartum care practices with our specialized course. Learn authentic healing techniques, dietary guidelines, herbal remedies, and therapeutic treatments for mother and baby care. Comprehensive training in traditional healing methods combined with modern healthcare practices.
-                        </p>
-                    </div>
-
-                    <div class="popular-box">
-                        <span class="popular-head-secondary">Transform Your Future in Healthcare!</span>
-                        <h3 class="popular-box-heading flexitem">Ayurveda Nursing 
-                            & Baby Care 
-                            <a href="./anbc.html"><i
-                                class="fa-solid fa-arrow-up-right-from-square" id="heading-arrow"></i></a></h3>
-            
-                        <p class="popular-box-description">
-                            Specialized training combining Ayurvedic principles with modern nursing care. Learn traditional therapies, infant care techniques, Panchakarma treatments, and Kerala special treatments. Master both traditional wisdom and contemporary healthcare practices for holistic patient care with a focus on mother and child wellbeing.
-                        </p>
-                    </div>
+                    <!-- AGDA Course Card -->
+                    <a href="./agda.html">
+                        <div class="course-card">
+                            <div class="course-card-image">
+                                <img src="assets/images/agda-course.jpg" alt="AGDA Course" class="course-img">
+                            </div>
+                            <div class="course-card-footer">
+                                <h3 class="course-title">AGDA Course</h3>
+                                <!-- <a href="./agda.html" class="course-link">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a> -->
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- DHCA Course Card -->
+                    <a href="./dhca.html">
+                        <div class="course-card">
+                            <div class="course-card-image">
+                                <img src="assets/images/dhca-course.jpg" alt="Diploma in Healthcare Assistance" class="course-img">
+                            </div>
+                            <div class="course-card-footer">
+                                <h3 class="course-title">Diploma in Healthcare Assistance</h3>
+                                <!-- <a href="./dhca.html" class="course-link">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a> -->
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -184,9 +183,9 @@
         <!-- Learn Section (About Us) -->
         <section class="learn section" id="learn">
             <div class="learning-container container grid">
-                <img src="assets/images/d7c8fd66-173c-427c-95bc-cb88703b1d45.jpeg" alt="" class="learning-img">
+                <img src="assets/images/learn.jpg" alt="" class="learning-img">
                 <div class="learning-content">
-                    <h3 class="sub-heading">About Us</h3>
+                    <h3 class="sub-heading gradient-text">About Us</h3>
                     <h2 class="section-title">Empowering Healthcare Excellence</h2>
                     <p class="learning-description">
                         DearCare Academy is a premier healthcare training institute committed to nurturing skilled professionals in nursing and patient care. With a focus on traditional wisdom and modern healthcare practices, we offer specialized courses in Ayurveda nursing, healthcare assistance, and baby care.
@@ -197,10 +196,10 @@
                     <p class="learning-description">
                         With experienced faculty, state-of-the-art facilities, and strong industry connections, we ensure our students receive the best possible education and placement support in the healthcare sector.
                     </p>
-                    <div class="learning-actions flexitem">
+                    <!-- <div class="learning-actions flexitem p-2">
                         
                         <a href="#popular"><button class="btn">View Courses</button></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -208,7 +207,7 @@
         <!-- Testimonials Section -->
         <section class="testimonials section" id="testimonials">
             <div class="testimonial-container container">
-                <h2 class="section-title border-bottom testimonial-title text-center">Student Success Stories</h2>
+                <h2 class="section-title testimonial-title text-center">Student Success Stories</h2>
                 <div class="testimonial-swiper swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -274,7 +273,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Keep existing navigation arrows -->
+                    <!-- Add navigation buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -282,7 +283,8 @@
         <!-- FAQs Section -->
         <section class="faq section" id="faq">
             <div class="faq-container container">
-                <h2 class="section-title text-center border-bottom">Frequently Asked Questions</h2>
+                <h2 class="section-title text-center">Frequently Asked Questions</h2>
+                <p class="faq-subtitle">Find answers to the most common questions about our courses and training programs</p>
                 <div class="accordion-container">
                     <div class="accordion">
                         <div class="question flexitem">
@@ -344,13 +346,11 @@
                 <img src="assets/images/Shape-2.png" alt="" class="newsletter-shape-2">
                 <img src="assets/images/cubes.png" alt="" class="newsletter-shape-3">
                 <div class="newsletter-content">
-                    <h2 class="section-title text-center">Get Our News And Updates</h2>
-                    <p class="newsletter-description text-center">"Stay informed and inspired! Subscribe to our
-                        newsletter for the latest updates, exclusive content, and exciting opportunities. <br> Join a
-                        community passionate about learning and personal growth.</p>
+                    <h2 class="section-title text-center">Stay Updated with DearCare</h2>
+                    <p class="newsletter-description text-center">Subscribe to our newsletter for exclusive updates, healthcare insights, and course announcements. Join our growing community of healthcare professionals.</p>
                     <div class="newsletter-input flexitem">
-                        <input type="email" class="input-box" placeholder="Enter Your Email" required>
-                        <button class="btn newsletter-btn">Submit</button>
+                        <input type="email" class="input-box" placeholder="Enter Your Email Address" required>
+                        <button class="btn newsletter-btn">Subscribe Now</button>
                     </div>
                 </div>
             </div>
@@ -362,7 +362,7 @@
     <footer class="footer section" id="contact">
         <div class="footer-container container grid">
             <div class="footer-grid-item footer-action">
-                <img src="assets/images/dearcare-favicon.png" width="200" alt="DearCare Logo">
+                <img src="assets/images/academyFooter.png" width="200" alt="DearCare Logo">
                 <p class="footer-description">Transform your passion for healthcare into a rewarding career with DearCare Academy. Join us to master nursing and patient care with excellence!</p>
                 <div class="footer-social-icons flexitem">
                     <a href="#" class="social-link"><i class="fa-brands fa-instagram" id="social-icon"></i></a>
@@ -420,7 +420,7 @@
     </footer>
     <div class="footer-bottom text-center">
         <div class="footer-copy">
-            <p class="footer-info">&copy; Made with <i class="fa-solid fa-heart" id="heart-icon"></i>by <a href="www.growisen.com">Growisen</a> </p>
+            <p class="footer-info">&copy; Made with <i class="fa-solid fa-heart" id="heart-icon"></i> by <a href="www.growisen.com">Growisen</a> </p>
         </div>
     </div>
 
@@ -447,6 +447,37 @@
     ================================================================== -->
     <script src="assets/js/script.js"></script>
     <script src="assets/js/script.min.js" defer></script>
+    <script>
+        // Mobile Menu Toggle
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+
+        // Show mobile menu
+        if(navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-nav');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            });
+        }
+
+        // Hide mobile menu
+        if(navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-nav');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        }
+
+        // Close mobile menu when clicking on a nav link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-nav');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        });
+    </script>
 </body>
 
 </html>

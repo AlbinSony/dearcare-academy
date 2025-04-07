@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DearCare Academy - Course Enquiry</title>
+    <!-- Import Poppins font to match index.html -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="shortcut icon" href="assets/images/dearcare-favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="page-transition"></div>
+    <!-- Add Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Add header navigation matching index.html -->
+    <header class="header" id="header">
+        <nav class="navbar container flexitem">
+            <a href="index.html" aria-label="DearCare Academy Homepage"><img src="assets/images/academyNav.png" loading="lazy" alt="DearCare Logo" width="190" height="auto" class="nav-logo-img"></a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <i class="fa-solid fa-xmark" id="nav-close" aria-label="Close menu"></i>
+                <ul class="nav-list flexitem">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#popular" class="nav-link">Courses</a></li>
+                    <li><a href="index.html#learn" class="nav-link">About</a></li>
+                    <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="index.html#faq" class="nav-link">FAQs</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" id="nav-toggle" aria-label="Open menu"></i>
+        </nav>
+    </header>
+
+    <!-- Add back button below the header -->
+    <div class="back-button-container">
+        <button class="back-button" id="backButton" aria-label="Go back">
+            <i class="fas fa-arrow-left"></i> Go back
+        </button>
+    </div>
+
+    <div class="registration-container">
+        <header class="form-header">
+            <h1 class="gradient-text">Course Enquiry Form</h1>
+            <p>Interested in our healthcare courses? Fill in your details and we'll get back to you shortly.</p>
+        </header>
+
+        <form id="enquiryForm" class="registration-form">
+            <!-- Personal Information Section -->
+            <section class="form-section">
+                <h2><i class="fas fa-user"></i> Your Information</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Full Name*</label>
+                        <input type="text" id="fullName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number*</label>
+                        <input type="tel" id="phone" name="phone_no" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Course of Interest*</label>
+                        <select id="course" name="course" required>
+                            <option value="">Select Course</option>
+                            <option value="Advanced General Nursing Assistant (AGDA)">Advanced General Nursing Assistant (AGDA)</option>
+                            <option value="Diploma in Healthcare Assistance">Diploma in Healthcare Assistance</option>
+                            <option value="Ayurveda Nursing & Baby Care">Ayurveda Nursing & Baby Care</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            <div class="form-submit">
+                <button type="submit" class="btn submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Enquiry
+                </button>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h3>Enquiry Submitted Successfully!</h3>
+                <p>Thank you for your interest in our courses. Our team will contact you soon with more information.</p>
+                <div class="return-home">
+                    <a href="index.html" class="btn">Return to Homepage</a>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Submission Error</h3>
+                <p id="errorText">There was an error submitting your enquiry. Please try again later.</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Progress Bar functionality
+        window.onscroll = function() {
+            updateProgressBar();
+        };
+
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        }
+
+        // Back button functionality
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.history.back();
+        });
+
+        // Mobile Menu Toggle (matching index.html functionality)
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+
+        // Show mobile menu
+        if(navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-nav');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            });
+        }
+
+        // Hide mobile menu
+        if(navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-nav');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        }
+
+        // Close mobile menu when clicking on a nav link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-nav');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        });
+
+        // Form submission handler for enquiry form
+        document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            document.querySelector('.form-submit').classList.add('loading');
+            
+            // Hide any previous messages
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('errorMessage').classList.remove('show');
+            
+            try {
+                // Get form data
+                const formData = new FormData(this);
+                
+                // Create data object for API
+                const apiData = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    phone_no: formData.get('phone_no'),
+                    course: formData.get('course')
+                };
+                
+                // Send the data to the API
+                const response = await fetch('https://dearcare-academy.vercel.app/api/enquiry', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(apiData)
+                });
+                
+                // Check if the response is OK
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to submit the enquiry');
+                }
+                
+                // Handle successful submission
+                document.getElementById('successMessage').classList.add('show');
+                
+                // Reset form
+                document.getElementById('enquiryForm').reset();
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                
+                // Show error message
+                document.getElementById('errorText').textContent = error.message || 'There was an error submitting your enquiry. Please try again later.';
+                document.getElementById('errorMessage').classList.add('show');
+                
+                // Scroll to error message
+                document.getElementById('errorMessage').scrollIntoView({ behavior: 'smooth' });
+            } finally {
+                // Reset submit button
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Enquiry';
+                submitBtn.disabled = false;
+                document.querySelector('.form-submit').classList.remove('loading');
+            }
+        });
+    </script>
+
+    <style>
+        /* Adjusted back button container to prevent navbar overlap */
+        .back-button-container {
+            padding: 25px 30px 0;
+            max-width: 1200px;
+            margin: 80px auto 0; /* Added top margin to ensure it's below fixed navbar */
+            position: relative;
+            z-index: 90; /* Below navbar z-index but still above other content */
+        }
+        
+        /* Updated back button styling for better visibility */
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(90deg, rgba(28,121,194,1) 37%, rgba(72,193,86,1) 95%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(28, 121, 194, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-button i {
+            margin-right: 6px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(28, 121, 194, 0.3);
+        }
+
+        /* Adjust the registration container top margin to maintain proper spacing */
+        .registration-container {
+            margin-top: 2rem; /* Reduced top margin since back button container now has margin */
+        }
+
+        @media screen and (max-width: 768px) {
+            .back-button-container {
+                padding: 15px 20px 0;
+                margin-top: 70px; /* Slightly smaller top margin for mobile */
+            }
+            
+            .back-button {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</body>
+</html>
