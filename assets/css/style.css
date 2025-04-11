@@ -544,6 +544,101 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   font-size: 1.1rem;
 }
 
+/* Video Section Styles */
+.video-section {
+    padding: 2rem 6rem;
+    background: #fff;
+}
+
+.video-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.video-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.video-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f8f9fa;
+    box-shadow: 0 10px 30px rgba(28, 121, 194, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.video-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #000;
+    border-radius: 20px;
+}
+
+.video-player video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.play-button i {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-left: 5px;
+}
+
+.video-player.playing .play-button {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Video Section Responsive */
+@media screen and (max-width: 992px) {
+    .video-section {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .video-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-section {
+        padding: 1.5rem;
+    }
+    
+    .play-button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .play-button i {
+        font-size: 20px;
+    }
+}
+
 /* Media Queries for Responsive Design */
 @media screen and (max-width: 1200px) {
   .home {

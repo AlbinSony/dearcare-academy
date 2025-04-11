@@ -353,3 +353,49 @@ tl7.from(".faq-container>.section-title", {
   opacity: 0,
   duration: 0.7,
 });
+
+// ======================================================== VIDEO PLAYER FUNCTIONALITY ======================================================== //
+
+document.addEventListener('DOMContentLoaded', function() {
+    const videoPlayers = document.querySelectorAll('.video-player');
+    
+    videoPlayers.forEach(player => {
+        const video = player.querySelector('video');
+        const playButton = player.querySelector('.play-button');
+        
+        // Handle video click
+        video.addEventListener('click', function() {
+            toggleVideo(video, player);
+        });
+        
+        // Handle play button click
+        playButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleVideo(video, player);
+        });
+        
+        // Show play button when video ends
+        video.addEventListener('ended', function() {
+            player.classList.remove('playing');
+        });
+    });
+    
+    function toggleVideo(video, player) {
+        // Pause all other videos first
+        document.querySelectorAll('.video-player video').forEach(v => {
+            if (v !== video) {
+                v.pause();
+                v.parentElement.classList.remove('playing');
+            }
+        });
+        
+        // Toggle current video
+        if (video.paused) {
+            video.play();
+            player.classList.add('playing');
+        } else {
+            video.pause();
+            player.classList.remove('playing');
+        }
+    }
+});
