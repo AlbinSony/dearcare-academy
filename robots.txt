@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.dearcare.in/sitemap.xml
-
+Sitemap: https://www.dearcareacademy.com/sitemap.xml
 Disallow: /assets/css/
 Disallow: /assets/js/
