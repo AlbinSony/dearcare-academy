@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Allow: /sitemap.xml
 Sitemap: https://www.dearcareacademy.com/sitemap.xml
-Disallow: /assets/css/
-Disallow: /assets/js/
+
+# Block specific directories
+Disallow: /admin/
+Disallow: /private/
