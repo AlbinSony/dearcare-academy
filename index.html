@@ -235,24 +235,26 @@
                 <div class="video-wrapper">
                     <div class="video-card">
                         <div class="video-player">
-                            <video width="100%" poster="assets/images/video-thumb1.jpg">
+                            <video width="100%" id="video1">
                                 <source src="assets/videos/video1.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
-                            <div class="play-button">
+                            <div class="play-button" id="playBtn1">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="video-thumbnail" id="thumb1"></div>
                         </div>
                     </div>
                     <div class="video-card">
                         <div class="video-player">
-                            <video width="100%" poster="assets/images/video-thumb2.jpg">
+                            <video width="100%" id="video2">
                                 <source src="assets/videos/video2.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
-                            <div class="play-button">
+                            <div class="play-button" id="playBtn2">
                                 <i class="fas fa-play"></i>
                             </div>
+                            <div class="video-thumbnail" id="thumb2"></div>
                         </div>
                     </div>
                 </div>
@@ -269,7 +271,7 @@
                             <div class="testimonial-box flexitem">
                                 <div class="testimonial-box-data">
                                     <div class="testimonial-user-image">
-                                        <img src="assets/images/user-2.jpg" width="100" height="100" alt="" class="testimonial-user">
+                                        <img src="assets/images/avatars/female-avatar-1.svg" width="100" height="100" alt="Female avatar representing Lakshmi K." class="testimonial-user">
                                     </div>
                                     <p class="testimonial-name text-center">- Lakshmi K.</p>
                                     <p class="testimonial-info text-center">
@@ -290,7 +292,7 @@
                             <div class="testimonial-box flexitem">
                                 <div class="testimonial-box-data">
                                     <div class="testimonial-user-image">
-                                        <img src="assets/images/user-1.png" width="100" alt="" class="testimonial-user">
+                                        <img src="assets/images/avatars/female-avatar-2.svg" width="100" height="100" alt="Female avatar representing Priya M." class="testimonial-user">
                                     </div>
                                     <p class="testimonial-name text-center">- Priya M.</p>
                                     <p class="testimonial-info text-center">
@@ -311,7 +313,7 @@
                             <div class="testimonial-box flexitem">
                                 <div class="testimonial-box-data">
                                     <div class="testimonial-user-image">
-                                        <img src="assets/images/user-3.jpg" width="100" alt="" class="testimonial-user">
+                                        <img src="assets/images/avatars/female-avatar-3.svg" width="100" height="100" alt="Female avatar representing Meera S." class="testimonial-user">
                                     </div>
                                     <p class="testimonial-name text-center">- Meera S.</p>
                                     <p class="testimonial-info text-center">
@@ -448,7 +450,8 @@
                     </div>
                     <div class="address-block">
                         <h4>Study Centre:</h4>
-                        <p>LA GRACE Building</p>
+                        <p>LA GRACE Building,</p>
+                        <p>Malaparamba P.O</p>
                         <p>Wayanad Road, Near IQRAA Hospital</p>
                         <p>Kozhikode, Kerala - 673009</p>
                     </div>
@@ -533,7 +536,193 @@
                 document.body.style.overflow = ''; // Restore scrolling
             });
         });
+
+        // Video Players with thumbnail extraction
+        document.addEventListener('DOMContentLoaded', function() {
+            const video1 = document.getElementById('video1');
+            const video2 = document.getElementById('video2');
+            const playBtn1 = document.getElementById('playBtn1');
+            const playBtn2 = document.getElementById('playBtn2');
+            const thumb1 = document.getElementById('thumb1');
+            const thumb2 = document.getElementById('thumb2');
+            
+            // Extract thumbnail from first video
+            function extractThumbnail(video, thumbElement, timeInSeconds) {
+                // Create a canvas element
+                const canvas = document.createElement('canvas');
+                
+                // Function to capture the frame
+                function captureFrame() {
+                    if (video.readyState >= 2) {
+                        // Set canvas dimensions to match video
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        
+                        // Draw the video frame to canvas
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        
+                        // Convert canvas to data URL and set as background
+                        const dataURL = canvas.toDataURL('image/jpeg');
+                        thumbElement.style.backgroundImage = `url(${dataURL})`;
+                        thumbElement.style.display = 'block';
+                        
+                        // Hide the video until play is clicked
+                        video.style.opacity = 0;
+                        
+                        // Remove the event listeners since we're done
+                        video.removeEventListener('loadeddata', handleLoadedData);
+                        video.removeEventListener('seeked', captureFrame);
+                        
+                        // Reset video
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                }
+                
+                // Handler for when video data is loaded
+                function handleLoadedData() {
+                    // Jump to the specified time to grab thumbnail
+                    video.currentTime = timeInSeconds;
+                    video.addEventListener('seeked', captureFrame);
+                }
+                
+                // Start the process
+                if (video.readyState >= 2) {
+                    handleLoadedData();
+                } else {
+                    video.addEventListener('loadeddata', handleLoadedData);
+                }
+                
+                // Load video but don't play
+                video.load();
+            }
+            
+            // Extract thumbnails on page load
+            extractThumbnail(video1, thumb1, 1); // Get frame at 1 second
+            extractThumbnail(video2, thumb2, 2); // Get frame at 2 seconds
+            
+            // Play first video
+            playBtn1.addEventListener('click', function() {
+                thumb1.style.display = 'none';
+                video1.style.opacity = 1;
+                
+                if(video1.paused) {
+                    video1.play();
+                    playBtn1.style.display = 'none';
+                } else {
+                    video1.pause();
+                    playBtn1.style.display = 'flex';
+                }
+            });
+            
+            // Play second video
+            playBtn2.addEventListener('click', function() {
+                thumb2.style.display = 'none';
+                video2.style.opacity = 1;
+                
+                if(video2.paused) {
+                    video2.play();
+                    playBtn2.style.display = 'none';
+                } else {
+                    video2.pause();
+                    playBtn2.style.display = 'flex';
+                }
+            });
+            
+            // Show play button and thumbnail when video ends
+            video1.addEventListener('ended', function() {
+                video1.currentTime = 0;
+                playBtn1.style.display = 'flex';
+                thumb1.style.display = 'block';
+                video1.style.opacity = 0;
+            });
+            
+            video2.addEventListener('ended', function() {
+                video2.currentTime = 0;
+                playBtn2.style.display = 'flex';
+                thumb2.style.display = 'block';
+                video2.style.opacity = 0;
+            });
+        });
     </script>
+
+    <!-- Add inline CSS for video thumbnails -->
+    <style>
+        .video-player {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #000;
+            aspect-ratio: 16/9; /* Maintain video aspect ratio */
+        }
+        
+        .video-player video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 5;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            background-color: rgba(255,255,255,1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .play-button i {
+            color: #ff4646;
+            font-size: 24px;
+            margin-left: 4px; /* Adjust for play icon centering */
+        }
+        
+        .video-card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .video-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .video-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
 </body>
 
 </html>
