@@ -88,7 +88,8 @@
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
-                        <input type="number" id="age" name="age" class="enhanced-input" placeholder="Enter your age">
+                        <input type="number" id="age" name="age" class="enhanced-input" placeholder="Enter your age" min="18">
+                        <small class="form-hint">Must be 18 years or older</small>
                     </div>
                     <div class="form-group">
                         <label for="religion">Religion</label>
@@ -147,9 +148,9 @@
                         <label for="course">Course of Interest*</label>
                         <select id="course" name="course" required>
                             <option value="">Select Course</option>
-                            <option value="Advanced General Nursing Assistant (AGDA)">Advanced General Nursing Assistant (AGDA)</option>
-                            <option value="Diploma in Healthcare Assistance">Diploma in Healthcare Assistance</option>
-                            <option value="Ayurveda Nursing & Baby Care">Ayurveda Nursing & Baby Care</option>
+                            <option value="Advanced General Nursing Assistant (AGDA)">General Nursing Assistant (GDA)</option>
+                            <option value="Advanced Home Nursing & Patient Care Training">Advanced Home Care & Care Giver Training</option>
+                            <option value="Ayurveda Nursing & Baby Care">Ayurvedic Nursing</option>
                         </select>
                     </div>
                 </div>
@@ -242,8 +243,23 @@
                     age--;
                 }
                 
-                // Update the age field without validation
-                document.getElementById('age').value = age;
+                // Check if age is at least 18
+                if (age < 18) {
+                    alert('You must be at least 18 years old to apply.');
+                    this.value = '';
+                    document.getElementById('age').value = '';
+                } else {
+                    document.getElementById('age').value = age;
+                }
+            }
+        });
+
+        // Add age input validation
+        document.getElementById('age').addEventListener('input', function() {
+            const age = parseInt(this.value);
+            if (age < 18) {
+                alert('You must be at least 18 years old to apply.');
+                this.value = '';
             }
         });
 
@@ -355,7 +371,7 @@
             border: 1px solid #ced4da;
             padding: 10px 16px;
             font-size: 16px;
-            background-color: #f8f9fa;
+            background-color: #fff;
             box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
         }
 
@@ -386,18 +402,6 @@
             .form-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Form inputs & validation */
-        .form-group input:valid:not(:placeholder-shown),
-        .form-group select:valid:not([value=""]) {
-            border-color: #28a745;
-            background-color: #f8fff8;
-        }
-
-        .form-group input:invalid:not(:placeholder-shown) {
-            border-color: #dc3545;
-            background-color: #fff8f8;
         }
 
         /* Adjusted back button container to prevent navbar overlap */
