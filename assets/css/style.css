@@ -687,11 +687,11 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     height: 100px;
     margin: 0 40px;
     vertical-align: middle;
-    transition: transform 0.3s ease; /* Changed from filter to transform */
+    transition: transform 0.3s ease;
 }
 
 .logos-slide img:hover {
-    transform: scale(1.05); /* Simple scale effect on hover */
+    transform: scale(1.05);
 }
 
 @keyframes slide {
@@ -723,6 +723,86 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     .logos-slide img {
         height: 60px;
         margin: 0 15px;
+    }
+}
+
+/* Logo Scroll Animation */
+.logo-scroll-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    padding: 40px 0; /* Increased padding */
+}
+
+.logo-scroll-container .section-title {
+    margin-bottom: 3rem; /* Increased margin */
+    font-size: clamp(2rem, 4vw, 3rem); /* Larger font size */
+    color: var(--text-dark-color);
+}
+
+.logo-track {
+    display: flex;
+    animation: scroll 20s linear infinite;
+    width: fit-content;
+}
+
+/* Create a duplicate set of logos for seamless scrolling */
+.logo-track-inner {
+    display: flex;
+    gap: 60px; /* Increased gap between logos */
+    padding: 0 30px;
+}
+
+.logo-item {
+    flex: 0 0 auto;
+    width: 180px; /* Increased from 150px */
+    height: 80px; /* Increased from 60px */
+}
+
+.logo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-item img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* This should be adjusted based on the total width of your logos */
+        transform: translateX(-50%);
+    }
+}
+
+/* Adjust responsive breakpoints for larger logos */
+@media screen and (max-width: 768px) {
+    .logo-track-inner {
+        gap: 40px;
+        padding: 0 20px;
+    }
+    
+    .logo-item {
+        width: 150px;
+        height: 70px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo-track-inner {
+        gap: 30px;
+        padding: 0 15px;
+    }
+    
+    .logo-item {
+        width: 120px;
+        height: 60px;
     }
 }
 
