@@ -639,6 +639,93 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     }
 }
 
+/* Partners Section Styles */
+.partners-section {
+    padding: 4rem 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+.partners-section .section-title {
+    margin-bottom: 3rem;
+}
+
+.logos {
+    overflow: hidden;
+    padding: 2rem 0;
+    background: white;
+    white-space: nowrap;
+    position: relative;
+}
+
+.logos:before,
+.logos:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+
+.logos:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.logos:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+.logos-slide {
+    display: inline-block;
+    animation: slide 20s infinite linear;
+}
+
+.logos-slide img {
+    height: 100px;
+    margin: 0 40px;
+    vertical-align: middle;
+    transition: transform 0.3s ease; /* Changed from filter to transform */
+}
+
+.logos-slide img:hover {
+    transform: scale(1.05); /* Simple scale effect on hover */
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .partners-section {
+        padding: 3rem 0;
+    }
+    
+    .logos-slide img {
+        height: 80px;
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .partners-section {
+        padding: 2rem 0;
+    }
+    
+    .logos-slide img {
+        height: 60px;
+        margin: 0 15px;
+    }
+}
+
 /* Media Queries for Responsive Design */
 @media screen and (max-width: 1200px) {
   .home {
