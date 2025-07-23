@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DearCare Academy - Corporate Enquiry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="shortcut icon" href="assets/images/dearcare-favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="page-transition"></div>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Header matching enquiry.html -->
+    <header class="header" id="header">
+        <nav class="navbar container flexitem">
+            <a href="index.html" aria-label="DearCare Academy Homepage"><img src="assets/images/academyNav.png" loading="lazy" alt="DearCare Logo" width="190" height="auto" class="nav-logo-img"></a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <i class="fa-solid fa-xmark" id="nav-close" aria-label="Close menu"></i>
+                <ul class="nav-list flexitem">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#popular" class="nav-link">Courses</a></li>
+                    <li><a href="index.html#learn" class="nav-link">About</a></li>
+                    <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="index.html#faq" class="nav-link">FAQs</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+                </ul>
+            </div>
+            <i class="fa-solid fa-bars" id="nav-toggle" aria-label="Open menu"></i>
+        </nav>
+    </header>
+
+    <div class="back-button-container">
+        <button class="back-button" id="backButton" aria-label="Go back">
+            <i class="fas fa-arrow-left"></i> Go back
+        </button>
+    </div>
+
+    <div class="registration-container">
+        <header class="form-header">
+            <h1 class="gradient-text">Corporate Collaboration Enquiry</h1>
+            <p>Partner with DearCare Academy for your healthcare staffing needs. Fill in your details below.</p>
+        </header>
+
+        <form id="corporateEnquiryForm" class="registration-form">
+            <section class="form-section">
+                <h2><i class="fas fa-building"></i> Organization Details</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="organizationType">Organization Type*</label>
+                        <select id="organizationType" name="organization_type" required>
+                            <option value="">Select Type</option>
+                            <option value="Hospital">Hospital</option>
+                            <option value="Old Age Home">Old Age Home</option>
+                            <option value="Clinic">Clinic</option>
+                            <option value="Palliative Care">Palliative Care</option>
+                            <option value="Care Home">Care Home</option>
+                            <option value="Rehabilitation Center">Rehabilitation Center</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="organizationName">Organization Name*</label>
+                        <input type="text" id="organizationName" name="organization_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestedPersonName">Contact Person Name*</label>
+                        <input type="text" id="requestedPersonName" name="contact_person" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="designation">Designation*</label>
+                        <input type="text" id="designation" name="designation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number*</label>
+                        <input type="tel" id="phone" name="phone_no" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="staffCount">Number of Staff Required*</label>
+                        <div class="staff-count-input">
+                            <input type="number" 
+                                   id="staffCount" 
+                                   name="staff_count" 
+                                   required 
+                                   min="1"
+                                   placeholder="Enter number of staff needed">
+                            <small class="helper-text">Please specify the number of healthcare professionals needed</small>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Additional Requirements</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Please specify any specific requirements or questions"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <div class="form-submit">
+                <button type="submit" class="btn submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Enquiry
+                </button>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h3>Enquiry Submitted Successfully!</h3>
+                <p>Thank you for your interest in collaboration. Our team will contact you shortly to discuss further details.</p>
+                <div class="return-home">
+                    <a href="index.html" class="btn">Return to Homepage</a>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Submission Error</h3>
+                <p id="errorText">There was an error submitting your enquiry. Please try again later.</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Progress Bar functionality
+        window.onscroll = function() {
+            updateProgressBar();
+        };
+
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        }
+
+        // Back button functionality
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.history.back();
+        });
+
+        // Mobile menu functionality
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+
+        if(navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-nav');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if(navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-nav');
+                document.body.style.overflow = '';
+            });
+        }
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-nav');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('corporateEnquiryForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            document.querySelector('.form-submit').classList.add('loading');
+            
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('errorMessage').classList.remove('show');
+            
+            try {
+                const formData = new FormData(this);
+                
+                const apiData = {
+                    organization_type: formData.get('organization_type'),
+                    organization_name: formData.get('organization_name'),
+                    contact_person: formData.get('contact_person'),
+                    designation: formData.get('designation'),
+                    email: formData.get('email'),
+                    phone_no: formData.get('phone_no'),
+                    staff_count: formData.get('staff_count'),
+                    message: formData.get('message')
+                };
+                
+                const response = await fetch('https://dearcare-academy.vercel.app/api/corporate-enquiry', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(apiData)
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to submit the enquiry');
+                }
+                
+                document.getElementById('successMessage').classList.add('show');
+                document.getElementById('corporateEnquiryForm').reset();
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                document.getElementById('errorText').textContent = error.message || 'There was an error submitting your enquiry. Please try again later.';
+                document.getElementById('errorMessage').classList.add('show');
+                document.getElementById('errorMessage').scrollIntoView({ behavior: 'smooth' });
+            } finally {
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Enquiry';
+                submitBtn.disabled = false;
+                document.querySelector('.form-submit').classList.remove('loading');
+            }
+        });
+    </script>
+
+    <style>
+        /* Add button outline style for the corporate enquiry button */
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Keep other styles from enquiry.html */
+        .back-button-container {
+            padding: 25px 30px 0;
+            max-width: 1200px;
+            margin: 80px auto 0;
+            position: relative;
+            z-index: 90;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(90deg, rgba(28,121,194,1) 37%, rgba(72,193,86,1) 95%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(28, 121, 194, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-button i {
+            margin-right: 6px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(28, 121, 194, 0.3);
+        }
+
+        .registration-container {
+            margin-top: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .staff-count-input input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        .staff-count-input input[type="number"]::-webkit-inner-spin-button,
+        .staff-count-input input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .staff-count-input input[type="number"]:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(28, 121, 194, 0.1);
+        }
+
+        .helper-text {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* Style consistent with other form elements */
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(28, 121, 194, 0.1);
+        }
+
+        @media screen and (max-width: 768px) {
+            .back-button-container {
+                padding: 15px 20px 0;
+                margin-top: 70px;
+            }
+            
+            .back-button {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .home-action {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</body>
+</html>
