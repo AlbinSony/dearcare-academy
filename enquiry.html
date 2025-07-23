@@ -56,102 +56,51 @@
         <form id="enquiryForm" class="registration-form">
             <!-- Personal Information Section -->
             <section class="form-section">
-                <h2><i class="fas fa-user"></i> Personal Information</h2>
-                <p class="section-description">Tell us about yourself. Fields marked with * are required.</p>
+                <h2><i class="fas fa-user"></i> Your Information</h2>
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="fullName">Full Name*</label>
+                        <label for="fullName">Your Name*</label>
                         <input type="text" id="fullName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age*</label>
+                        <input type="number" 
+                               id="age" 
+                               name="age" 
+                               required 
+                               min="18" 
+                               max="99">
+                        <small class="error-text" id="ageError"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Male/Female*</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number*</label>
+                        <input type="tel" id="phone" name="phone_no" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address*</label>
                         <input type="email" id="email" name="email" required>
-                        <small class="form-hint">We'll send course information to this address</small>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Phone Number*</label>
-                        <input type="tel" id="phone" name="phone_no" placeholder="10-digit number" pattern="[0-9]{10}" required>
-                        <small class="form-hint">Example: 9876543210</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Gender</label>
-                        <select id="gender" name="gender">
-                            <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="dob">Date of Birth</label>
-                        <input type="date" id="dob" name="dob">
-                    </div>
-                    <div class="form-group">
-                        <label for="age">Age</label>
-                        <input type="number" id="age" name="age" class="enhanced-input" placeholder="Enter your age" min="18">
-                        <small class="form-hint">Must be 18 years or older</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="religion">Religion</label>
-                        <input type="text" id="religion" name="religion">
-                    </div>
-                    <div class="form-group">
-                        <label for="caste">Caste</label>
-                        <input type="text" id="caste" name="caste">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact & Address Section -->
-            <section class="form-section">
-                <h2><i class="fas fa-map-marker-alt"></i> Contact & Address</h2>
-                <p class="section-description">Where can we reach you?</p>
-                <div class="form-grid">
-                    <div class="form-group grid-full">
-                        <label for="address">Address</label>
-                        <textarea id="address" name="address" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="aadhaar">Aadhaar Number</label>
-                        <input type="text" id="aadhaar" name="aadhaar_no" pattern="[0-9]{12}" placeholder="12-digit Aadhaar">
-                        <small class="form-hint">Enter 12 digits without spaces</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="guardian">Guardian Name</label>
-                        <input type="text" id="guardian" name="guardian_name">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education Section -->
-            <section class="form-section">
-                <h2><i class="fas fa-graduation-cap"></i> Educational Background</h2>
-                <p class="section-description">Tell us about your academic qualifications.</p>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="highestQualification">Highest Qualification</label>
-                        <input type="text" id="highestQualification" name="highest_qualification">
-                    </div>
-                    <div class="form-group">
-                        <label for="yearOfPassing">Year of Passing</label>
-                        <input type="number" id="yearOfPassing" name="year_of_passing" class="enhanced-input" placeholder="Enter your passing year">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Course Selection Section -->
-            <section class="form-section">
-                <h2><i class="fas fa-book"></i> Course Selection</h2>
-                <p class="section-description">Select the course you're interested in.</p>
-                <div class="form-grid">
-                    <div class="form-group grid-full">
-                        <label for="course">Course of Interest*</label>
+                        <label for="course">Select Course*</label>
                         <select id="course" name="course" required>
                             <option value="">Select Course</option>
-                            <option value="Advanced General Nursing Assistant (AGDA)">General Nursing Assistant (GDA)</option>
-                            <option value="Advanced Home Nursing & Patient Care Training">Advanced Home Care & Care Giver Training</option>
-                            <option value="Ayurveda Nursing & Baby Care">Ayurvedic Nursing</option>
+                            <option value="Advanced General Nursing Assistant (AGDA)">Advanced General Nursing Assistant (AGDA)</option>
+                            <option value="Diploma in Healthcare Assistance">Diploma in Healthcare Assistance</option>
+                            <option value="Ayurveda Nursing & Baby Care">Ayurveda Nursing & Baby Care</option>
                         </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Any Queries?</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
                     </div>
                 </div>
             </section>
@@ -230,39 +179,6 @@
             });
         });
 
-        // Auto-calculate age from DOB
-        document.getElementById('dob').addEventListener('change', function() {
-            const dobValue = this.value;
-            if (dobValue) {
-                const dob = new Date(dobValue);
-                const today = new Date();
-                let age = today.getFullYear() - dob.getFullYear();
-                const monthDiff = today.getMonth() - dob.getMonth();
-                
-                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-                    age--;
-                }
-                
-                // Check if age is at least 18
-                if (age < 18) {
-                    alert('You must be at least 18 years old to apply.');
-                    this.value = '';
-                    document.getElementById('age').value = '';
-                } else {
-                    document.getElementById('age').value = age;
-                }
-            }
-        });
-
-        // Add age input validation
-        document.getElementById('age').addEventListener('input', function() {
-            const age = parseInt(this.value);
-            if (age < 18) {
-                alert('You must be at least 18 years old to apply.');
-                this.value = '';
-            }
-        });
-
         // Form submission handler for enquiry form
         document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -284,22 +200,13 @@
                 // Create data object for API
                 const apiData = {
                     name: formData.get('name'),
+                    age: formData.get('age'),
+                    gender: formData.get('gender'),
                     email: formData.get('email'),
                     phone_no: formData.get('phone_no'),
                     course: formData.get('course'),
+                    message: formData.get('message')
                 };
-
-                // Add optional fields if they have values
-                if (formData.get('age')) apiData.age = parseInt(formData.get('age'));
-                if (formData.get('dob')) apiData.dob = formData.get('dob');
-                if (formData.get('address')) apiData.address = formData.get('address');
-                if (formData.get('gender')) apiData.gender = formData.get('gender');
-                if (formData.get('religion')) apiData.religion = formData.get('religion');
-                if (formData.get('caste')) apiData.caste = formData.get('caste');
-                if (formData.get('aadhaar_no')) apiData.aadhaar_no = formData.get('aadhaar_no');
-                if (formData.get('guardian_name')) apiData.guardian_name = formData.get('guardian_name');
-                if (formData.get('highest_qualification')) apiData.highest_qualification = formData.get('highest_qualification');
-                if (formData.get('year_of_passing')) apiData.year_of_passing = parseInt(formData.get('year_of_passing'));
                 
                 // Send the data to the API
                 const response = await fetch('https://dearcare-academy.vercel.app/api/enquiry', {
@@ -310,12 +217,10 @@
                     body: JSON.stringify(apiData)
                 });
                 
-                // Parse the response
-                const responseData = await response.json();
-                
                 // Check if the response is OK
                 if (!response.ok) {
-                    throw new Error(responseData.error || 'Failed to submit the enquiry');
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to submit the enquiry');
                 }
                 
                 // Handle successful submission
@@ -343,67 +248,23 @@
                 document.querySelector('.form-submit').classList.remove('loading');
             }
         });
+
+        // Replace the validateAge function with this simpler version
+        document.getElementById('age').addEventListener('input', function() {
+            const errorElement = document.getElementById('ageError');
+            const value = parseInt(this.value);
+            
+            if (value < 18) {
+                errorElement.textContent = 'Minimum age requirement is 18 years';
+            } else if (value > 99) {
+                errorElement.textContent = 'Please enter a valid age';
+            } else {
+                errorElement.textContent = '';
+            }
+        });
     </script>
 
     <style>
-        /* Base styles */
-        .form-section {
-            margin-bottom: 2rem;
-        }
-
-        .section-description {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-hint {
-            display: block;
-            font-size: 0.8rem;
-            color: #6c757d;
-            margin-top: 0.25rem;
-        }
-
-        /* Enhanced inputs with better styling */
-        .enhanced-input {
-            transition: all 0.3s ease;
-            border-radius: 8px;
-            border: 1px solid #ced4da;
-            padding: 10px 16px;
-            font-size: 16px;
-            background-color: #fff;
-            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
-        }
-
-        .enhanced-input:focus {
-            border-color: #80bdff;
-            background-color: #fff;
-            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
-        }
-
-        .enhanced-input::placeholder {
-            color: #adb5bd;
-            font-style: italic;
-        }
-
-        /* Grid layouts */
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .grid-full {
-            grid-column: 1 / -1;
-        }
-
-        /* Responsive adjustment */
-        @media (max-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
         /* Adjusted back button container to prevent navbar overlap */
         .back-button-container {
             padding: 25px 30px 0;
@@ -443,6 +304,59 @@
             margin-top: 2rem; /* Reduced top margin since back button container now has margin */
         }
 
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+        }
+
+        .error-text {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Add these styles to match number input with other fields */
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Remove number spinner buttons */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        input[type="number"]:focus {
+            border-color: #1c79c2;
+        }
+
         @media screen and (max-width: 768px) {
             .back-button-container {
                 padding: 15px 20px 0;
@@ -452,6 +366,10 @@
             .back-button {
                 padding: 8px 16px;
                 font-size: 13px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
