@@ -143,7 +143,18 @@
                         Our specialized courses empower you with practical skills for a successful medical career.
                     </p>
                     <div class="home-action flexitem">
-                        <a href="./enquiry.html" class="btn">Know more <i class="fas fa-arrow-right"></i></a>
+                        <div class="action-item">
+                            <a href="./enquiry.html" class="btn">
+                                <i class="fas fa-user-graduate"></i> Student Enquiry
+                            </a>
+                            <p class="action-caption">Start your healthcare career journey</p>
+                        </div>
+                        <div class="action-item">
+                            <a href="./corporate-enquiry.html" class="btn btn-outline">
+                                <i class="fas fa-building"></i> Corporate Enquiry
+                            </a>
+                            <p class="action-caption">Partner with us for staffing solutions</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -795,6 +806,109 @@
         @media (min-width: 768px) {
             .video-wrapper {
                 grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .home-action {
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 0.5rem;
+        }
+
+        .action-caption {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 0.75rem;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .action-item:hover .action-caption {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-item:hover .btn {
+            transform: translateY(-2px);
+        }
+
+        @media screen and (max-width: 768px) {
+            .home-action {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .action-caption {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        .home-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+            max-width: 600px;
+        }
+
+        .home-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .home-description {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #666;
+            margin: 0;
+            padding-right: 2rem;
+        }
+
+        .home-action {
+            margin-top: 1.5rem !important;
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        @media screen and (max-width: 768px) {
+            .home-title {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            .home-description {
+                font-size: 1rem;
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .home-content {
+                align-items: center;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .home-action {
+                justify-content: center;
             }
         }
     </style>
