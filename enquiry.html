@@ -179,6 +179,16 @@
             });
         });
 
+        // Fixed mapping function
+        function getBackendCourseName(frontendName) {
+            const courseMap = {
+                'General Nursing Assistant (GDA)': 'Diploma in Healthcare Assistance',
+                'Advanced Home care & Care giver Training (AHCCT)': 'Advanced Home Care & Care Giver Training',
+                'Ayurvedic Nursing': 'Ayurveda Nursing & Baby Care'
+            };
+            return courseMap[frontendName] || frontendName;
+        }
+
         // Form submission handler for enquiry form
         document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -197,16 +207,27 @@
                 // Get form data
                 const formData = new FormData(this);
                 
-                // Create data object for API with updated course names
+                // Validate required fields before submission
+                const requiredFields = ['name', 'age', 'gender', 'phone_no', 'email', 'course'];
+                for (let field of requiredFields) {
+                    if (!formData.get(field) || formData.get(field).trim() === '') {
+                        throw new Error(`${field.replace('_', ' ')} is required`);
+                    }
+                }
+                
+                // Create data object for API with mapped course name
                 const apiData = {
-                    name: formData.get('name'),
-                    age: formData.get('age'),
+                    name: formData.get('name').trim(),
+                    age: parseInt(formData.get('age')),
                     gender: formData.get('gender'),
-                    email: formData.get('email'),
-                    phone_no: formData.get('phone_no'),
-                    course: formData.get('course'),
-                    message: formData.get('message')
+                    email: formData.get('email').trim(),
+                    phone_no: formData.get('phone_no').trim(),
+                    course: getBackendCourseName(formData.get('course')),
+                    message: formData.get('message') ? formData.get('message').trim() : ''
                 };
+                
+                // Log the data being sent for debugging
+                console.log('Sending data to API:', apiData);
                 
                 // Send the data to the API
                 const response = await fetch('https://dearcare-academy.vercel.app/api/enquiry', {
@@ -217,10 +238,13 @@
                     body: JSON.stringify(apiData)
                 });
                 
+                // Get response data
+                const responseData = await response.json();
+                console.log('API Response:', responseData);
+                
                 // Check if the response is OK
                 if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || 'Failed to submit the enquiry');
+                    throw new Error(responseData.message || responseData.error || 'Failed to submit the enquiry');
                 }
                 
                 // Handle successful submission
@@ -235,8 +259,18 @@
             } catch (error) {
                 console.error('Error submitting form:', error);
                 
-                // Show error message
-                document.getElementById('errorText').textContent = error.message || 'There was an error submitting your enquiry. Please try again later.';
+                // Show error message with more specific details
+                let errorMessage = 'There was an error submitting your enquiry. Please try again later.';
+                
+                if (error.message.includes('required')) {
+                    errorMessage = error.message;
+                } else if (error.message.includes('Failed to fetch')) {
+                    errorMessage = 'Network error. Please check your internet connection and try again.';
+                } else if (error.message) {
+                    errorMessage = error.message;
+                }
+                
+                document.getElementById('errorText').textContent = errorMessage;
                 document.getElementById('errorMessage').classList.add('show');
                 
                 // Scroll to error message
