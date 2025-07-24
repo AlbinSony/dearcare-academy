@@ -93,9 +93,9 @@
                         <label for="course">Select Course*</label>
                         <select id="course" name="course" required>
                             <option value="">Select Course</option>
-                            <option value="Advanced General Nursing Assistant (AGDA)">Advanced General Nursing Assistant (AGDA)</option>
-                            <option value="Diploma in Healthcare Assistance">Diploma in Healthcare Assistance</option>
-                            <option value="Ayurveda Nursing & Baby Care">Ayurveda Nursing & Baby Care</option>
+                            <option value="General Nursing Assistant (GDA)">General Nursing Assistant (GDA)</option>
+                            <option value="Advanced Home care & Care giver Training (AHCCT)">Advanced Home care & Care giver Training (AHCCT)</option>
+                            <option value="Ayurvedic Nursing">Ayurvedic Nursing</option>
                         </select>
                     </div>
                     <div class="form-group full-width">
@@ -197,7 +197,7 @@
                 // Get form data
                 const formData = new FormData(this);
                 
-                // Create data object for API
+                // Create data object for API with updated course names
                 const apiData = {
                     name: formData.get('name'),
                     age: formData.get('age'),
