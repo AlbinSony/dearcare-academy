@@ -59,25 +59,48 @@
                 <h2><i class="fas fa-user"></i> Your Information</h2>
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="fullName">Full Name*</label>
+                        <label for="fullName">Your Name*</label>
                         <input type="text" id="fullName" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address*</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="age">Age*</label>
+                        <input type="number" 
+                               id="age" 
+                               name="age" 
+                               required 
+                               min="18" 
+                               max="99">
+                        <small class="error-text" id="ageError"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Male/Female*</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number*</label>
                         <input type="tel" id="phone" name="phone_no" required>
                     </div>
                     <div class="form-group">
-                        <label for="course">Course of Interest*</label>
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Select Course*</label>
                         <select id="course" name="course" required>
                             <option value="">Select Course</option>
-                            <option value="Advanced General Nursing Assistant (AGDA)">Advanced General Nursing Assistant (AGDA)</option>
-                            <option value="Diploma in Healthcare Assistance">Diploma in Healthcare Assistance</option>
-                            <option value="Ayurveda Nursing & Baby Care">Ayurveda Nursing & Baby Care</option>
+                            <option value="General Nursing Assistant (GDA)">General Nursing Assistant (GDA)</option>
+                            <option value="Advanced Home care & Care giver Training (AHCCT)">Advanced Home care & Care giver Training (AHCCT)</option>
+                            <option value="Ayurvedic Nursing">Ayurvedic Nursing</option>
                         </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Any Queries?</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
                     </div>
                 </div>
             </section>
@@ -156,6 +179,16 @@
             });
         });
 
+        // Fixed mapping function
+        function getBackendCourseName(frontendName) {
+            const courseMap = {
+                'General Nursing Assistant (GDA)': 'Diploma in Healthcare Assistance',
+                'Advanced Home care & Care giver Training (AHCCT)': 'Advanced Home Care & Care Giver Training',
+                'Ayurvedic Nursing': 'Ayurveda Nursing & Baby Care'
+            };
+            return courseMap[frontendName] || frontendName;
+        }
+
         // Form submission handler for enquiry form
         document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -174,13 +207,27 @@
                 // Get form data
                 const formData = new FormData(this);
                 
-                // Create data object for API
+                // Validate required fields before submission
+                const requiredFields = ['name', 'age', 'gender', 'phone_no', 'email', 'course'];
+                for (let field of requiredFields) {
+                    if (!formData.get(field) || formData.get(field).trim() === '') {
+                        throw new Error(`${field.replace('_', ' ')} is required`);
+                    }
+                }
+                
+                // Create data object for API with mapped course name
                 const apiData = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    phone_no: formData.get('phone_no'),
-                    course: formData.get('course')
+                    name: formData.get('name').trim(),
+                    age: parseInt(formData.get('age')),
+                    gender: formData.get('gender'),
+                    email: formData.get('email').trim(),
+                    phone_no: formData.get('phone_no').trim(),
+                    course: getBackendCourseName(formData.get('course')),
+                    message: formData.get('message') ? formData.get('message').trim() : ''
                 };
+                
+                // Log the data being sent for debugging
+                console.log('Sending data to API:', apiData);
                 
                 // Send the data to the API
                 const response = await fetch('https://dearcare-academy.vercel.app/api/enquiry', {
@@ -191,10 +238,13 @@
                     body: JSON.stringify(apiData)
                 });
                 
+                // Get response data
+                const responseData = await response.json();
+                console.log('API Response:', responseData);
+                
                 // Check if the response is OK
                 if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || 'Failed to submit the enquiry');
+                    throw new Error(responseData.message || responseData.error || 'Failed to submit the enquiry');
                 }
                 
                 // Handle successful submission
@@ -209,8 +259,18 @@
             } catch (error) {
                 console.error('Error submitting form:', error);
                 
-                // Show error message
-                document.getElementById('errorText').textContent = error.message || 'There was an error submitting your enquiry. Please try again later.';
+                // Show error message with more specific details
+                let errorMessage = 'There was an error submitting your enquiry. Please try again later.';
+                
+                if (error.message.includes('required')) {
+                    errorMessage = error.message;
+                } else if (error.message.includes('Failed to fetch')) {
+                    errorMessage = 'Network error. Please check your internet connection and try again.';
+                } else if (error.message) {
+                    errorMessage = error.message;
+                }
+                
+                document.getElementById('errorText').textContent = errorMessage;
                 document.getElementById('errorMessage').classList.add('show');
                 
                 // Scroll to error message
@@ -220,6 +280,20 @@
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Enquiry';
                 submitBtn.disabled = false;
                 document.querySelector('.form-submit').classList.remove('loading');
+            }
+        });
+
+        // Replace the validateAge function with this simpler version
+        document.getElementById('age').addEventListener('input', function() {
+            const errorElement = document.getElementById('ageError');
+            const value = parseInt(this.value);
+            
+            if (value < 18) {
+                errorElement.textContent = 'Minimum age requirement is 18 years';
+            } else if (value > 99) {
+                errorElement.textContent = 'Please enter a valid age';
+            } else {
+                errorElement.textContent = '';
             }
         });
     </script>
@@ -264,6 +338,59 @@
             margin-top: 2rem; /* Reduced top margin since back button container now has margin */
         }
 
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+        }
+
+        .error-text {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Add these styles to match number input with other fields */
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Remove number spinner buttons */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        input[type="number"]:focus {
+            border-color: #1c79c2;
+        }
+
         @media screen and (max-width: 768px) {
             .back-button-container {
                 padding: 15px 20px 0;
@@ -273,6 +400,10 @@
             .back-button {
                 padding: 8px 16px;
                 font-size: 13px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
