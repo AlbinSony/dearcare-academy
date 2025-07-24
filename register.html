@@ -66,9 +66,9 @@
                         <label for="course">Course*</label>
                         <select id="course" name="course" required>
                             <option value="">Select Course</option>
-                            <option value="Advanced General Nursing Assistant (AGDA)">Advanced General Nursing Assistant (AGDA)</option>
-                            <option value="Diploma in Healthcare Assistance">Diploma in Healthcare Assistance</option>
-                            <option value="Ayurveda Nursing & Baby Care">Ayurveda Nursing & Baby Care</option>
+                            <option value="Advanced General Nursing Assistant (AGDA)">General Nursing Assistant (GDA)</option>
+                            <option value="Advanced Home Nursing & Patient Care Training">Advanced Home Care & Care Giver Training</option>
+                            <option value="Ayurveda Nursing & Baby Care">Ayurvedic Nursing</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -626,8 +626,16 @@
             submitBtn.disabled = true;
             
             try {
-                // Create the request data matching the exact structure that worked in Postman
+                // Get form data and ensure disabled fields are included
                 const formData = new FormData(this);
+                
+                // Handle the "Same as Current Address" case to ensure values are captured even if fields are disabled
+                if (document.getElementById('sameAddress').checked) {
+                    formData.set('permanentAddress', document.getElementById('currentAddress').value);
+                    formData.set('permanentPinCode', document.getElementById('currentPin').value);
+                }
+                
+                // Create the request data structure exactly as expected by the backend
                 const requestData = {
                     fullName: formData.get('fullName'),
                     course: formData.get('course'),
@@ -677,15 +685,15 @@
                     duration: formData.get('duration'),
                     responsibilities: formData.get('responsibilities'),
                     guardianName: formData.get('guardianName'),
-                    guardianRelation: formData.get('relationship'),
+                    guardianRelation: formData.get('guardianRelation'),
                     guardianContact: formData.get('guardianContact'),
                     guardianAddress: formData.get('guardianAddress'),
-                    guardianAadhar: formData.get('aadhar'),
+                    guardianAadhar: formData.get('guardianAadhar'),
                     healthStatus: formData.get('healthStatus'),
                     disability: formData.get('disability'),
                     nocStatus: formData.get('nocStatus'),
                     sourceOfInformation: formData.get('sourceOfInformation'),
-                    assigningAgent: formData.get('agent'),
+                    assigningAgent: formData.get('assigningAgent'),
                     priority: formData.get('priority'),
                     status: formData.get('status'),
                     sourceCategory: formData.get('sourceCategory'),
@@ -703,7 +711,10 @@
                     }
                 };
 
-                // Send the request
+                console.log("Sending data:", requestData); // Debug: Log data being sent
+                
+                // Try the simpler approach first - just send JSON data without files
+                // This helps identify if the issue is with the file uploads or the data structure
                 const response = await fetch('https://dearcare-academy.vercel.app/api/register/students', {
                     method: 'POST',
                     headers: {
@@ -712,19 +723,33 @@
                     body: JSON.stringify(requestData)
                 });
 
-                if (!response.ok) {
+                // If this call was successful, then let's proceed
+                if (response.ok) {
+                    // If needed, we can upload files separately in a second step
+                    const responseData = await response.json();
+                    console.log("Success response:", responseData);
+                    
+                    // Handle successful submission
+                    document.getElementById('successMessage').classList.add('show');
+                    window.scrollTo({
+                        top: document.getElementById('successMessage').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    this.reset();
+                } else {
                     const errorData = await response.json();
+                    console.error("Server error response:", errorData);
                     throw new Error(errorData.message || 'Failed to submit the form');
                 }
-
-                // Handle successful submission
-                document.getElementById('successMessage').classList.add('show');
-                this.reset();
                 
             } catch (error) {
                 console.error('Error submitting form:', error);
                 document.getElementById('errorMessage').classList.add('show');
-                document.getElementById('errorText').textContent = error.message;
+                document.getElementById('errorText').textContent = error.message || "An unexpected error occurred";
+                window.scrollTo({
+                    top: document.getElementById('errorMessage').offsetTop - 100,
+                    behavior: 'smooth'
+                });
             } finally {
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
                 submitBtn.disabled = false;
@@ -772,6 +797,42 @@
             margin-top: 2rem; /* Reduced top margin since back button container now has margin */
         }
 
+        /* Fix for submit button and error message overlap in mobile view */
+        .form-submit {
+            margin-bottom: 30px; /* Increased bottom margin for better spacing */
+            position: relative;
+            z-index: 1;
+        }
+
+        .success-message,
+        .error-message {
+            display: none;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0 35px; /* Added more margin for better spacing */
+            text-align: center;
+            position: relative;
+            clear: both; /* Ensures it appears below the submit button */
+            z-index: 2; /* Higher z-index than submit button */
+        }
+
+        .success-message.show,
+        .error-message.show {
+            display: block;
+        }
+
+        .error-message {
+            background-color: rgba(255, 87, 87, 0.1);
+            border: 1px solid #ff5757;
+            color: #ff5757;
+        }
+
+        .error-message i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
         @media screen and (max-width: 768px) {
             .back-button-container {
                 padding: 15px 20px 0;
@@ -781,6 +842,51 @@
             .back-button {
                 padding: 8px 16px;
                 font-size: 13px;
+            }
+
+            /* Enhanced mobile-specific fixes for form submission area */
+            /* Completely restructure the form submission area layout for mobile */
+            .form-submit {
+                margin-bottom: 20px; /* Reduced space below submit button */
+                order: 2; /* Change the visual order on mobile */
+            }
+
+            .success-message,
+            .error-message {
+                margin: 0 0 30px; /* Adjust margins */
+                padding: 15px 10px;
+                order: 1; /* Display status messages before the button */
+            }
+
+            /* Make error message more visible */
+            .error-message.show {
+                z-index: 100; /* Ensure it's above other elements */
+            }
+            
+            .error-message h3 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            /* Apply flexbox to rearrange elements on mobile */
+            .registration-form {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            /* When status is shown, hide the submit button */
+            .success-message.show ~ .form-submit,
+            .error-message.show ~ .form-submit {
+                display: none;
+            }
+            
+            /* Alternative approach: Move status messages in DOM */
+            .registration-form .success-message,
+            .registration-form .error-message {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                width: auto;
             }
         }
     </style>

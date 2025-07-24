@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.dearcare.in/sitemap.xml
+Allow: /sitemap.xml
 
-Disallow: /assets/css/
-Disallow: /assets/js/
+# Block specific directories
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://www.dearcareacademy.com/sitemap.xml
