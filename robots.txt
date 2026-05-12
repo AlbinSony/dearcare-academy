@@ -6,4 +6,4 @@ Allow: /sitemap.xml
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://www.dearcareacademy.com/sitemap.xml
+Sitemap: https://www.dearcareacademy.in/sitemap.xml
