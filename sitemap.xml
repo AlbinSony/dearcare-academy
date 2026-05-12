@@ -4,38 +4,38 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>https://www.dearcareacademy.com/</loc>
-        <lastmod>2025-04-15T11:56:00+00:00</lastmod>
+        <loc>https://www.dearcareacademy.in/</loc>
+        <lastmod>2026-05-12T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://www.dearcareacademy.com/agda.html</loc>
-        <lastmod>2025-04-15T11:56:00+00:00</lastmod>
+        <loc>https://www.dearcareacademy.in/agda.html</loc>
+        <lastmod>2026-05-12T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.dearcareacademy.com/dhca.html</loc>
-        <lastmod>2025-04-15T11:56:00+00:00</lastmod>
+        <loc>https://www.dearcareacademy.in/dhca.html</loc>
+        <lastmod>2026-05-12T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.dearcareacademy.com/anbc.html</loc>
-        <lastmod>2025-04-15T11:56:00+00:00</lastmod>
+        <loc>https://www.dearcareacademy.in/anbc.html</loc>
+        <lastmod>2026-05-12T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.dearcareacademy.com/register.html</loc>
-        <lastmod>2025-04-15T11:56:00+00:00</lastmod>
+        <loc>https://www.dearcareacademy.in/register.html</loc>
+        <lastmod>2026-05-12T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.dearcareacademy.com/enquiry.html</loc>
-        <lastmod>2025-04-15T11:56:00+00:00</lastmod>
+        <loc>https://www.dearcareacademy.in/enquiry.html</loc>
+        <lastmod>2026-05-12T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
