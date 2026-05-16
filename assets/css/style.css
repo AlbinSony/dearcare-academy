@@ -129,7 +129,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 /* Remove the box-shadow from header when scrolling */
 .show-header {
   box-shadow: none;
-  background-color: rgba(255, 255, 255, 0.98);
+  /* background-color: rgba(255, 255, 255, 0.98); */
 }
 
 /* Header top row with search - keeping it as a separate row */
@@ -201,6 +201,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
+  margin-top: 15px;
 }
 
 /* Right-align nav items */
@@ -222,13 +223,14 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 }
 
 /* Special color for the About link */
-.nav-list li:nth-child(2) .nav-link {
+/* .nav-list li:nth-child(2) .nav-link {
   color: var(--span-primary-color);
-}
+} */
 
-.nav-list li:nth-child(2) .nav-link:hover {
-  color: #1eaa5d; /* Darker green on hover */
-}
+/* Darker green on hover */
+/* .nav-list li:nth-child(2) .nav-link:hover {
+  color: #1eaa5d; 
+} */
 
 /* Adjust for home section spacing */
 .home {
