@@ -41,7 +41,8 @@
 /* RESET CSS STYLING */
 * {margin: 0; padding: 0; box-sizing: border-box;}
 *::selection {color: var(--body-color); background: var(--primary-color);}
-html, body {scroll-behavior: smooth;}
+html, body {scroll-behavior: smooth;
+ scroll-padding-top:95px;}
 body {
   color: var(--text-color);
   font-family: var(--first-font);
@@ -49,6 +50,7 @@ body {
 }
 .main {
   overflow-x: hidden;
+  padding-top:95px;
 }
 body::-webkit-scrollbar {width: 0.5rem;}
 body::-webkit-scrollbar-thumb {background: var(--secondary-color); border-radius: 2px;}
@@ -195,7 +197,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 
 /* Adjust navbar to accommodate the search bar row */
 .navbar {
-  height: var(--header-height);
+  /* height: var(--header-height); */
+  height: 80px;
   justify-content: space-between;
   padding: 0 6rem; /* Updated to match hero horizontal padding */
   max-width: 1400px;
@@ -234,6 +237,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 
 /* Adjust for home section spacing */
 .home {
+  /* =========================================== */
   margin-top: 9rem; 
   position: relative;
   min-height: auto; /* Remove fixed height calculation */
@@ -811,6 +815,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 /* Media Queries for Responsive Design */
 @media screen and (max-width: 1200px) {
   .home {
+    /* =========================================== */
     padding: 1rem 4rem 3rem; /* Further reduced padding */
   }
   
@@ -937,7 +942,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   }
   
   .home {
-    margin-top: 2rem;
+    /* ========================================================== */
+    /* margin-top: 2rem; */
     padding: 0 4rem 5rem; /* Reduced padding for tablets */
   }
 }
@@ -945,7 +951,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 @media screen and (max-width: 767px) {
   .home {
     padding: 0 2rem 2.5rem; /* Further reduced padding */
-    margin-top: 4.5rem;
+    /* ========================================================== */
+    /* margin-top: 4.5rem; */
   }
   
   .home-title {
@@ -967,13 +974,15 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   }
   
   .home {
-    margin-top: 0rem; 
+    /* ========================================================== */
+    /* margin-top: 0rem;  */
     padding: 0 1.5rem 4rem; /* Reduced padding for mobile */
   }
   
   .navbar {
     padding: 0 0.5rem; /* Further reduced from 0.75rem to 0.5rem */
-    height: calc(var(--header-height) - 0.5rem);
+    /* height: calc(var(--header-height) - 0.5rem); */
+    height: 80px;
     justify-content: space-between;
     align-items: center;
   }
@@ -1025,7 +1034,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   /* Ensure the navbar has correct styling for the mobile toggle button */
   .navbar {
     padding: 0 0.5rem; /* Apply our reduced padding */
-    height: calc(var(--header-height) - 0.5rem);
+    /* height: calc(var(--header-height) - 0.5rem); */
+    height: 80px;
     justify-content: space-between;
     align-items: center;
   }
@@ -1107,7 +1117,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 @media screen and (max-width: 480px) {
   .home {
     padding: 0 1.5rem 2rem; /* Minimal padding for small screens */
-    margin-top: 4rem;
+    /* ========================================================== */
+    /* margin-top: 4rem; */
   }
   
   .home-title {
@@ -1131,6 +1142,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   }
 
   .home {
+    /* ========================================================== */
     padding: 0 1rem 4rem; /* Further reduced padding for small screens */
   }
   
@@ -2056,7 +2068,9 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   /* Adjust header and home padding for medium screens */
   .header-top { padding: 0.8rem 4rem 0; }
   .navbar { padding: 0 2rem; }
-  .home { padding: 0 2rem 5rem; } /* Reduced padding for medium screens */
+  .home { 
+    /* ========================================================== */
+    padding: 0 2rem 5rem; } /* Reduced padding for medium screens */
   .home-content { 
     margin-left: 0; /* Reset the right alignment for medium screens */
     max-width: 100%;
@@ -2064,7 +2078,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 
 
   .home {
-    margin-top: 10rem;
+    /* ========================================================== */
+    /* margin-top: 10rem; */
     padding-top: 2rem;
   }
   
