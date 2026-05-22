@@ -225,6 +225,17 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   color: var(--secondary-color);
 }
 
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #1e90ff, #32cd32);
+}
+
 /* Special color for the About link */
 /* .nav-list li:nth-child(2) .nav-link {
   color: var(--span-primary-color);
@@ -463,7 +474,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   padding-inline: 2.5rem;
   padding-top: 0; /* Remove top padding */
   padding-bottom: 3rem;
-  margin-top: -70px; /* Create negative margin to overlap with hero section */
+  /* Create negative margin to overlap with hero section */
+  /* margin-top: -70px;  */
   z-index: 10; /* Ensure it appears above other content */
 }
 
@@ -1061,7 +1073,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   .popular {
     padding-inline: 1.5rem;
     padding-bottom: 2rem;
-    margin-top: -50px; /* Adjusted for reduced padding */
+    /* Adjusted for reduced padding */
+    margin-top: -50px; 
   }
   
   .popular-courses-grid {grid-template-columns: 1fr; gap: 1.5rem;}
@@ -1163,7 +1176,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   .popular {
     padding-inline: 1rem;
     padding-bottom: 1.5rem;
-    margin-top: -40px; /* Further adjusted for smaller screens */
+    /* Further adjusted for smaller screens */
+    margin-top: -40px; 
   }
   
   .learning-img {max-height: 300px;}
@@ -1260,7 +1274,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     padding-block: 0.8rem;
   }
   
-  .learning-content .sub-heading.gradient-text {
+  .learning-content .sub-heading.gradient-text, .popular .sub-heading.gradient-text.courses-text{
     font-size: clamp(1.8rem, 3vw, 1.3rem);
   }
 }
@@ -1277,6 +1291,10 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   
   .sub-heading.gradient-text {
     font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  }
+
+  .sub-heading.gradient-text.courses-text{
+    font-size: clamp(1.8rem, 3vw, 1.3rem);
   }
   
   .learning-description {
@@ -2062,6 +2080,12 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   display: inline-block;
 }
 
+.courses-text{
+  text-align: center;
+  display: block;
+  margin-bottom: 23px;
+}
+
 /* Media query for mobile devices */
 @media screen and (max-width: 1024px) {
   .nav-search-container { width: 180px; }
@@ -2137,7 +2161,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   }
 
 /* Consolidate spacing and hide elements on medium screens */
-.popular { margin-top: 3rem; }
+.popular { margin-top: 1rem; }
 .social-quick-bar { display: none; }
 }
 
