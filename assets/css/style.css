@@ -225,15 +225,8 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   color: var(--secondary-color);
 }
 
-.nav-link.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    border-radius: 10px;
-    background: linear-gradient(90deg, #1e90ff, #32cd32);
+.nav-link.active::after{
+    display: none;
 }
 
 /* Special color for the About link */
@@ -297,16 +290,19 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 
 .home-img-container {
   position: relative;
+  width: 100%;
   height: 100%;
+  min-height: 600px; /* adjust as needed */
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .home-img {
-  max-height: 400px; /* Reduced from 450px */
-  width: auto;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: all 0.5s ease;
   position: relative;
   z-index: 2;
@@ -477,6 +473,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   /* Create negative margin to overlap with hero section */
   /* margin-top: -70px;  */
   z-index: 10; /* Ensure it appears above other content */
+  text-align: center;
 }
 
 /* New Course Cards Grid Layout */
@@ -959,6 +956,20 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     /* margin-top: 2rem; */
     padding: 0 4rem 5rem; /* Reduced padding for tablets */
   }
+}
+
+@media screen and (min-width: 992px){
+  .nav-link.active::after{
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #1e90ff, #32cd32);
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -2081,8 +2092,6 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 }
 
 .courses-text{
-  text-align: center;
-  display: block;
   margin-bottom: 23px;
 }
 
@@ -2136,6 +2145,10 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     word-wrap: break-word;
   }
   
+  .home-img-container {
+    min-height: 0px;
+  }
+
   .home-img {
     display: none;
   }
