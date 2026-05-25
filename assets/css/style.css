@@ -250,7 +250,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   padding: 2rem 6rem 4rem; /* Reduced bottom padding */
   overflow: visible;
   background: linear-gradient(180deg, #ffffff 0%, rgba(247,250,255,0.5) 100%);
-  padding-top:140px;
+  padding-top:64px;
 }
 
 .home-container {
@@ -281,6 +281,13 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   line-height: 1.5; /* Slightly reduced from 1.6 */
   max-width: 95%; /* Increased from 90% */
   color: var(--text-light-color);
+}
+
+.home-description-keyword {
+  display: inline;
+  font-family: inherit;
+  font-weight: unset;
+  font-size: 1rem;
 }
 
 .home-action {
@@ -652,6 +659,16 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
     
     .play-button i {
         font-size: 20px;
+    }
+
+    .home-description-keyword {
+      font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .home-description-keyword {
+        font-size: 0.9rem
     }
 }
 
