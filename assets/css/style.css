@@ -1290,6 +1290,14 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
   }
 }
 
+@media screen and (min-width:992px) {
+  .learning-img{
+    width: 100%;
+    max-width: 550px;
+    justify-self: center;
+  }
+}
+
 @media screen and (max-width: 480px) {  
   .learn {
     padding: 2.5rem 1rem;
@@ -2092,7 +2100,7 @@ h1, h2, h3, h4 {font-family: var(--second-font);}
 }
 
 .courses-text{
-  margin-bottom: 23px;
+  margin-bottom: 40px;
 }
 
 /* Media query for mobile devices */
