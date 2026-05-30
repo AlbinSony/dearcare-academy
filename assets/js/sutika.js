@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Navigation toggle
+    // need to check on this constant - causing identifier console error
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
     const navClose = document.getElementById('nav-close');
