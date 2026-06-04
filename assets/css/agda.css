@@ -447,7 +447,7 @@ body {
 /* Eligibility Section - Clean Design */
 .course-section#eligibility {
     padding: var(--section-padding-large);
-    background: #fff;
+    /* background: #fff; */
 }
 
 .eligibility-section {
@@ -547,7 +547,7 @@ body {
 /* Career Opportunities Section - Professional Style */
 .course-section#careers {
     padding: var(--section-padding-large);
-    background: linear-gradient(135deg, rgba(245, 249, 255, 1) 0%, rgba(245, 249, 255, 0.5) 100%);
+    /* background: linear-gradient(135deg, rgba(245, 249, 255, 1) 0%, rgba(245, 249, 255, 0.5) 100%); */
 }
 
 .career-section {
@@ -710,7 +710,7 @@ body {
 /* Duration Box - Clean Professional Style */
 .course-section:has(.duration-box) {
     padding: var(--section-padding-large);
-    background: linear-gradient(135deg, rgba(245, 249, 255, 1) 0%, rgba(245, 249, 255, 0.5) 100%);
+    /* background: linear-gradient(135deg, rgba(245, 249, 255, 1) 0%, rgba(245, 249, 255, 0.5) 100%); */
 }
 
 .duration-box {
